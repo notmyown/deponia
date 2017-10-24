@@ -1,0 +1,50 @@
+@import url("select.css");
+
+@font-face {
+	font-family: 'KOMIKAX';
+	src: url('font/komikax-webfont.eot');
+	src: url('font/komikax-webfont.eot#iefix') format('embedded-opentype'), 
+    url('font/KomikaAxis.svg#komika_axisregular') format('svg'), 
+    url('font/komikax-webfont.woff') format('woff'), 
+	url('font/komikax-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+	font-family: Arial, Helvetica, Arial, sans-serif;
+	color: black;
+	font-size: 13px;
+	line-height: 15px;
+	margin: 0;
+	padding: 0;
+	background-color: white;
+}
+
+.title {
+	font-family : 'KOMIKAX';
+	font-size: 3em;
+	text-align: left;
+}
+
+TD {
+	vertical-align: top;
+}
+
+.label {
+	font-family : 'KOMIKAX';
+}
+
+.label.sub {
+	font-family: Arial, Helvetica, Arial, sans-serif;
+}
+.value > TD {
+	padding-left: 2em;
+}
+.value.sub > TD {
+	padding-left: 0;
+}
+
+.value.sub :first-child {
+	min-width: 10em;
+}

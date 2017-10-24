@@ -1,0 +1,60 @@
+<html>
+  <head>
+    <link rel="manifest" href="js/manifest.json">
+    <link rel="stylesheet" href="css/deponia.css" type="text/css" charset="utf-8" />
+    <script src="js/jquery-1.7.2.min.js"></script>
+	<script src="js/deponia.data.js"></script>
+	<script src="js/Abenteuer.js"></script>
+	<script src="js/deponia.js"></script>
+  </head>
+  <body>
+    <div class="content">
+	  <div id="header">
+        <div id="masthead">
+          <div id="branding" role="banner">
+            <div style="height:244px;">  </div>
+          </div>
+          <!-- #branding -->
+          <div id="access" role="navigation">
+	        <div class="menu-header">
+	          <ul id="menu-deutsch" class="menu">
+				<li id="menu-item-group" class="menu-item "><a href="#">Gruppe</a></li>
+				<li id="menu-item-journal" class="menu-item "><a href="#">Journal</a></li>
+		        <li id="menu-item-generator" class="menu-item "><a href="#">Generator</a>
+			      <ul class="sub-menu">
+				    <li id="menu-item-generator-nsc" class="menu-item "><a href="#">NSC</a>
+						<ul class="sub-sub-menu">
+						</ul>
+					</li>
+			        <li id="menu-item-generator-adventure" class="menu-item "><a href="#">Abenteuer</a>
+						<ul class="sub-sub-menu">
+						</ul>
+					</li>
+		            <li id="menu-item-generator-places" class="menu-item "><a href="#">Orte</a>
+						<ul class="sub-sub-menu">
+						</ul>
+					</li>
+			      </ul>
+		        </li>
+              </ul>
+	        </div>
+          </div>
+          <!-- #access --> 
+        </div>
+        <!-- #masthead --> 
+      </div>
+	  <div class="main">
+		<div class='maincontent'>
+			
+		</div>
+	  </div>
+	</div>
+	<script>
+      var deponia;
+      $(document).ready(function() {
+        deponia = new Deponia(data);
+		deponia.func.init();
+      });
+  </script>
+  </body>
+</html>

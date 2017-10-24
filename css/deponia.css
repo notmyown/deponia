@@ -1,0 +1,256 @@
+@import url("select.css");
+
+@font-face {
+	font-family: 'KOMIKAX';
+	src: url('font/komikax-webfont.eot');
+	src: url('font/komikax-webfont.eot#iefix') format('embedded-opentype'), 
+    url('font/KomikaAxis.svg#komika_axisregular') format('svg'), 
+    url('font/komikax-webfont.woff') format('woff'), 
+	url('font/komikax-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+	font-family: Arial, Helvetica, Arial, sans-serif;
+	color: #7b4a21;;
+	font-size: 13px;
+	line-height: 15px;
+	margin: 0;
+	padding: 0;
+	background-color: black;
+}
+
+.content {
+	width: 100%;
+	height: 100%;
+	background: #000 url(../img/background.jpg) top left no-repeat;
+	padding-left: 435px;
+}
+
+#header {
+    padding: 0;
+    margin-bottom: 50px;
+	vertical-align: baseline;
+}
+
+a:link {
+    color: #ff9900;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+#branding, #main, #wrapper {
+    margin: 0 auto;
+    width: 995px;
+}
+
+#access {
+    display: block;
+    float: left;
+    margin: 0 auto;
+    width: 995px;
+    height: 58px;
+    position: absolute;
+    margin-bottom: 10px;
+    margin-left: -15px;
+    background: url(../img/nav_back.png) 0 0 repeat-x;
+    z-index: 975;
+}
+
+#access a {
+    color: #000;
+    font-family: 'KOMIKAX';
+    font-size: 13px;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 5px #ffffff;
+    display: block;
+    line-height: 33px;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#access a:hover {
+    color: #eaeaea;
+}
+
+#access ul {
+    display: inline-block;
+    text-align: center;
+}
+
+#access .menu-header, div.menu {
+    width: 995px;
+}
+
+#access .menu-header ul, div.menu ul {
+    list-style: none;
+    margin: -10px 0 0 0;
+}
+
+#access .menu-header li, div.menu li {
+    float: left;
+    position: relative;
+    display: block;
+    height: 38px;
+    margin: 0;
+    padding: 0;
+    background: url(../img/NAVI/navi_small.png) no-repeat;
+    width: 150px;
+}
+
+#access .menu-header li ul li {
+    width: 163px;
+    margin-left: -8px;
+}
+#access .menu-header li ul li ul li{
+    width: 130px;
+    margin-left: -8px;
+	height: 30px;
+}
+
+#access ul  .sub-menu {
+    display: none;
+	margin: 0;
+    padding: 0px;
+    padding-top: 5px;
+}
+
+#access ul  .sub-sub-menu {
+    display: none;
+	margin: 0;
+    padding: 0px;
+    padding-top: 5px;
+	margin-left: 170px;
+	margin-top: -32px;
+}
+
+#access .sub-menu li a {
+    background: url(../img/NAVI/dropdown.png) 0 0 no-repeat;
+    height: 32px;
+    line-height: 25px;
+    margin: -5px 0 0 0;
+    padding-top: 8px;
+    font-size: 14px;
+}
+
+#access .sub-menu li ul li {
+	background: none;
+}
+
+#access .sub-menu li ul li a {
+    background: url(../img/NAVI/dropdown2.png) 0 0 no-repeat;
+    height: 32px;
+    line-height: 25px;
+    margin: -5px 0 0 0;
+    padding-top: 5px;
+    font-size: 10px;
+}
+
+#access ul  li:hover .sub-menu {
+    display: inline-block;
+}
+
+#access ul  .sub-menu li:hover .sub-sub-menu {
+    display: inline-block;
+}
+
+
+
+.content .main::before {
+	content: " ";
+	background: url(../img/feature_kasten_top.png) no-repeat;
+	height: 59px;
+	width: 713px;
+	display: inline-block;
+}
+
+.content .main::after {
+	content: " ";
+	background: url(../img/feature_kasten_bottom.png) no-repeat;
+	height: 61px;
+	width: 713px;
+	display: inline-block;
+}
+
+.content .main {
+    margin-left: 40px;
+    margin-top: -15px;
+    margin-bottom: 25px;
+    width: 713px;
+    position: absolute;
+    z-index: 1;
+}
+
+.content .main .maincontent {
+	padding: 0 50px;
+	background: url(../img/feature_kasten_repeat.png) repeat-y;
+}
+
+.content .main .maincontent table{
+	width: 100%;
+}
+
+.content .main .maincontent table th{
+	font-family: 'KOMIKAX';
+	font-size: 45px;
+	color: #a84a16;
+}
+
+.content .main .maincontent .label {
+	font-family: 'KOMIKAX';
+}
+
+.content .main .maincontent .inAdventure .label {
+	font-family: Arial, Helvetica, Arial, sans-serif !important;
+}
+
+.content .main .maincontent .select SELECT {
+	width: 100%;
+}
+
+.content .main .maincontent .button { 
+	background: url(../img/bttn_back.png) no-repeat;
+	width: 75px;
+	height: 24px;
+	font-size: 8px;
+	text-align: center;
+	line-height: 24px;
+	cursor: pointer;
+	font-family: 'KOMIKAX';
+	text-shadow: 0px 0px 8px #000000, 0px 0px 8px #000000, 0px 0px 8px #000000, 0px 0px 8px #000000;
+}
+
+.content .main .maincontent .adventure_row_all .button { 
+	background: url(../img/random.png) no-repeat;
+	width: 233px;
+	height: 68px;
+	line-height: 64px;
+	font-size: 15px;
+}
+
+.content .main .maincontent .button.export {
+	margin-top:20px;	
+	background: url(../img/export.png) no-repeat;
+	width: 221px;
+	height: 61px;
+	font-size: 8px;
+	text-align: center;
+	line-height: 61px;
+	cursor: pointer;
+	font-family: 'KOMIKAX';
+	text-shadow: 0px 0px 8px #000000, 0px 0px 8px #000000, 0px 0px 8px #000000, 0px 0px 8px #000000;
+	padding-left: 10px;
+}
+
+.content .main .maincontent .button:hover {
+	color:#8ac11e !important;
+	text-decoration:none !important;
+}
+
+.content .main .maincontent .button {
+	color:#FFD284 !important;
+	text-decoration:none !important;
+}
