@@ -1,0 +1,6 @@
+@import url("screen.css") only screen;
+
+.content .main .maincontent .table .th {
+  font-family: 'KOMIKAX';
+  color: #a84a16;
+}

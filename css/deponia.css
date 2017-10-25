@@ -1,3 +1,4 @@
+@import url("main.css");
 @import url("select.css");
 
 @font-face {
@@ -19,6 +20,17 @@ body {
 	margin: 0;
 	padding: 0;
 	background-color: black;
+}
+
+.book {
+	width: 300px;
+	height: 300px;
+	margin: auto;
+}
+
+.book img {
+	width: 100%;
+	height: 100%;
 }
 
 .content {
@@ -231,6 +243,10 @@ a:link {
 	font-size: 15px;
 }
 
+.content .main .maincontent .adventure_row_all .button:hover {
+	background: url(../img/random_hover.png) no-repeat;
+}
+
 .content .main .maincontent .button.export {
 	margin-top:20px;	
 	background: url(../img/export.png) no-repeat;
@@ -254,3 +270,151 @@ a:link {
 	color:#FFD284 !important;
 	text-decoration:none !important;
 }
+
+
+/*charcontainer*/
+
+.charcontainer {
+	width: 600px;
+	height: 500px;
+	background: white;
+}
+
+.charcontainer .charimage {
+	width: 50%;
+	height: 100%;
+	background: url(../img/char/charbg.png) no-repeat;
+	background-size: 100% auto !important;
+	position: relative;
+	float: left;
+}
+
+.charcontainer .charimage .input {
+	position: absolute;
+	left: 15%;
+	top: 6%;
+	width: 60%;
+	background: transparent;
+	border: 0;
+	text-align: center;
+	font-weight: bold;
+	color: white;
+}
+
+.charcontainer .charimage .charimageimg {
+	width: 80%;
+  position: absolute;
+  right: 0;
+  top: 15%;
+}
+
+.charcontainer .charimage .charimageselector .left {
+    background: url(../img/char/css_arrow_left.png) 0 0 no-repeat;
+    width: 23px;
+    float: left;
+    height: 32px;
+    margin-left: 32px;
+    margin-top: 12px;
+}
+
+.charcontainer .charimage .charimageselector  .right {
+    background: url(../img/char/css_arrow_right.png) 0 0 no-repeat;
+    width: 32px;
+    float: right;
+    height: 32px;
+    margin-right: 28px;
+    margin-top: 12px;
+}
+
+.charcontainer .charimage .charimageselector  .center {
+    width: 48px;
+    float: left;
+    height: 42px;
+    margin-left: 43px;
+    margin-top: 2px;
+    font-size: 0.8em;
+    color: white;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.charcontainer .charimage .charimageselector {
+    background: url(../img/char/nav.png) no-repeat transparent;
+    width: 260px;
+    height: 60px;
+    line-height: 55px;
+    position: absolute;
+    bottom: 2em;
+    margin-left: 5%;
+}
+
+.charcontainer .charimage .charimageselector  .right:hover, .charcontainer .charimage .charimageselector .left:hover{
+  background-position: 0px -32px;
+}
+.charcontainer .charimage .charimageselector  .center:hover{
+  background-position: 0px -48px;
+}
+
+.charcontainer .charvalues {
+	float: left;
+	width: 49%;
+	font-family: 'KOMIKAX';
+	padding-top:2%;
+}
+
+.charcontainer .charvalues .tr {
+	height: 1em;
+}
+
+.charcontainer .charvalues .td {
+	position: relative;
+}
+
+
+.charcontainer .charvalues textarea {
+	background: url(../img/char/row.png);
+  background-size: 100% 1.2em;
+  border: 0;
+  width: 100%;
+  resize: none;
+  font-family: Arial, Helvetica, Arial, sans-serif !important;
+  font-size: 13px !important;
+}
+
+.charcontainer .charvalues .td.label,.charcontainer .charvalues label {
+    font-size: 10px;	
+    line-height: 12px;
+    color: black;
+}
+
+.charcontainer .charvalues .small {
+	height: 1em;
+}
+
+.charcontainer .charvalues .small label {
+	font-size: 9px;
+	font-family: Arial, Helvetica, Arial, sans-serif !important;
+}
+
+.charcontainer .charvalues label {
+    left:0;
+    position: absolute;
+}
+
+.charcontainer .charvalues .td.label {
+  background: url(../img/char/row.png);
+  background-size: 100% 1.6em;
+}
+
+.charcontainer .charvalues input {
+  background: url(../img/char/row.png);
+  background-size: 100% 1.2em;
+  border: 0;
+  width: 75%;
+  right: 0;
+  position: absolute;
+  font-family: Arial, Helvetica, Arial, sans-serif !important;
+  font-size: 13px !important;
+}
+
+

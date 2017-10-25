@@ -5,21 +5,21 @@ function DeponiaExport(data) {
 		var out = "";
 		var obj = JSON.parse(instance.func.param("export"));
 		instance.func.adventures
-		switch(obj.func.type) {
+		switch(obj.type) {
 			case 0 : {
-				instance.func.adventures.reise(obj.func);
+				instance.func.adventures.reise(obj);
 				break;
 			}
 			case 1 : {
-				instance.func.adventures.reise(obj.func);
+				instance.func.adventures.ubersee(obj);
 				break;
 			}
 			case 2 : {
-				instance.func.adventures.reise(obj.func);
+				instance.func.adventures.stadt(obj);
 				break;
 			}
-			case 2 : {
-				instance.func.adventures.reise(obj.func);
+			case 3 : {
+				instance.func.adventures.wildnis(obj);
 				break;
 			}
 		}
@@ -41,6 +41,18 @@ function DeponiaExport(data) {
 			var out = ADV.format[obj.type].table(obj);
 			$(".main").html(out);
 		},
+		ubersee : function(obj) {
+      var out = ADV.format[obj.type].table(obj);
+      $(".main").html(out);
+    },
+    stadt : function(obj) {
+      var out = ADV.format[obj.type].table(obj);
+      $(".main").html(out);
+    },
+    wildnis : function(obj) {
+      var out = ADV.format[obj.type].table(obj);
+      $(".main").html(out);
+    },
 	}
   };
 }

@@ -1,0 +1,45 @@
+DIV.table {
+	display: table;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+DIV.tr {
+	display: table-row;
+	width: 100%;
+	vertical-align: top;
+}
+
+DIV.th {
+  display: table-cell;
+  padding: 1px;
+  text-align: center;
+  margin-bottom: 5px;
+  font-size: 16px;
+  vertical-align: top;
+}
+
+DIV.td {
+	display: table-cell;
+	padding: 1px;
+	font-size: 16px;
+	line-height: 28px;
+	vertical-align: top;
+}
+
+DIV.perc100 {
+	width: 100%;
+}
+
+DIV.perc50 {
+  width: 50%;
+}
+
+DIV.perc33 {
+  width: 33.3%;
+}
+
+.content .main .maincontent .table .th {
+  font-size: 35px;
+  line-height: 85px;
+}

@@ -1,16 +1,16 @@
-function Wildnisabenteuer(input) {
+function Uberseeabenteuer(input) {
   var obj = input;
 
-  this.format = function(type) {
-    if ("table" == type) {
-      return this.table(this.input);
-    }
-  };
-  this.table = function() {
-    var dat = data.adventures.tables;
+	this.format = function(type, input) {
+		if ("table" == type) {
+			return this.table(input);
+		}
+	};
+	this.table = function(input) {
+	  var dat = data.adventures.tables;
     var out = "<table>";
-  //Titel
-    out += "<tr class='title'><th>Wildnisabenteuer</th></tr>";
+    //Titel
+    out += "<tr class='title'><th>&Uuml;berseeabenteuer</th></tr>";
   //Startpunkt der Reise
     out += "<tr class='label'><td>Der Startpunkt der Reise...</td></tr>";
     var val = $.grep(dat.t1.options, function(e){ return e.id == obj.startpunkt[0]; })[0];
@@ -44,13 +44,11 @@ function Wildnisabenteuer(input) {
     
     //Die Spieler begegnen dem Auftraggeber am folgenden Ort
     out += "<tr class='label'><td>Die Spieler begegnen dem Auftraggeber am folgenden Ort...</td></tr>";
-    val = $.grep(dat.t34.options, function(e){ return e.id == obj.auftraggeberanort[0]; })[0].name;
+    val = $.grep(dat.t9.options, function(e){ return e.id == obj.auftraggeberanort[0]; })[0].name;
     out += "<tr class='value'><td>" + val + "</td></tr>";
     
-    
-    //Die Spieler sollen
     out += "<tr class='label'><td>Die Spieler sollen f&uuml;r den Auftraggeber folgendes erledigen...</td></tr>";
-    val = $.grep(dat.t35.options, function(e){ return e.id == obj.auftraggebersollen[0]; })[0].name;
+    val = $.grep(dat.t23.options, function(e){ return e.id == obj.auftraggebersollen[0]; })[0].name;
     out += "<tr class='value'><td>" + val + "</td></tr>";
     //ITEM
     if (obj.auftraggebersollen.length == 3) {
@@ -116,63 +114,18 @@ function Wildnisabenteuer(input) {
       
     }
     
-    
-    //an diesem Ort
-    out += "<tr class='label'><td>An diesem Ort...</td></tr>";
-    val = $.grep(dat.t36.options, function(e){ return e.id == obj.andiesemort[0]; })[0];
+    //Zielpunk der Reise
+    out += "<tr class='label'><td>Zielpunkt der Reise...</td></tr>";
+    val = $.grep(dat.t1.options, function(e){ return e.id == obj.zielpunkt[0]; })[0];
     out += "<tr class='value'><td>" + val.name + "</td></tr>";
-    //SHOP
-    if (obj.andiesemort.length == 8) {
-      out += "<tr class='value'><td>";
-      out += "<table>";
-      out += "<tr class='label sub'><td colspan=2>Shop:</td></tr>";
-      val = $.grep(data.shops.tables.t1.options, function(e){ return e.id == obj.andiesemort[1]; })[0].name + " ";
-      val += $.grep(data.shops.tables.t2.options, function(e){ return e.id == obj.andiesemort[2]; })[0].name + " ";
-      val += $.grep(data.shops.tables.t3.options, function(e){ return e.id == obj.andiesemort[3]; })[0].name;
-      out += "<tr class='value sub'><td>Der Shop heisst:</td><td>"+ val + "</td></tr>";
-      val = $.grep(data.shops.tables.t4.options, function(e){ return e.id == obj.andiesemort[4]; })[0].name;
-      out += "<tr class='value sub'><td>Der Shop steht:</td><td>" + val + "</td></tr>";
-      val = $.grep(data.shops.tables.t5.options, function(e){ return e.id == obj.andiesemort[5]; })[0].name;
-      out += "<tr class='value sub'><td>Hinter der Theke steht:</td><td>" + val + "</td></tr>";
-      val = $.grep(data.shops.tables.t6.options, function(e){ return e.id == obj.andiesemort[6]; })[0].name;
-      out += "<tr class='value sub'><td>Angebotene Waren sind:</td><td>" + val + "</td></tr>";
-      val = $.grep(data.shops.tables.t7.options, function(e){ return e.id == obj.andiesemort[7]; })[0].name;
-      out += "<tr class='value sub'><td>Bezahlt wird:</td><td>" + val + "</td></tr>";
-      out += "</table></td></tr>";
-    } else if (obj.andiesemort.length == 13) {
-        out += "<tr class='value'><td>";
-        out += "<table>";
-        out += "<tr class='label sub'><td colspan=2>Hotel:</td></tr>";
-        val = $.grep(data.hotels.tables.t1.options, function(e){ return e.id == obj.andiesemort[1]; })[0].name + " ";
-        val += $.grep(data.hotels.tables.t2.options, function(e){ return e.id == obj.andiesemort[2]; })[0].name + " ";
-        val += $.grep(data.hotels.tables.t3.options, function(e){ return e.id == obj.andiesemort[3]; })[0].name;
-        out += "<tr class='value sub'><td>Das Hotel heisst:</td><td>"+ val + "</td></tr>";
-        val = $.grep(data.hotels.tables.t4.options, function(e){ return e.id == obj.andiesemort[4]; })[0].name;
-        out += "<tr class='value sub'><td>Der Hotel liegt:</td><td>" + val + "</td></tr>";
-        val = $.grep(data.hotels.tables.t5.options, function(e){ return e.id == obj.andiesemort[5]; })[0].name;
-        out += "<tr class='value sub'><td>Das Hotel-Team:</td><td>" + val + "</td></tr>";
-        val = $.grep(data.hotels.tables.t6.options, function(e){ return e.id == obj.andiesemort[6]; })[0].name;
-        out += "<tr class='value sub'><td>Die Zimmer:</td><td>" + val + "</td></tr>";
-        val = $.grep(data.hotels.tables.t7.options, function(e){ return e.id == obj.andiesemort[7]; })[0].name;
-        out += "<tr class='value sub'><td>Das Fr&uuml;hst&uuml;ck:</td><td>" + val + "</td></tr>";
-        val = $.grep(data.hotels.tables.t8.options, function(e){ return e.id == obj.andiesemort[8]; })[0].name;
-        out += "<tr class='value sub'><td>Die Betten:</td><td>" + val + "</td></tr>";
-        val = $.grep(data.hotels.tables.t9.options, function(e){ return e.id == obj.andiesemort[9]; })[0].name;
-        out += "<tr class='value sub'><td>Ausgechenkt wird:</td><td>" + val + "</td></tr>";
-        val = $.grep(data.hotels.tables.t10.options, function(e){ return e.id == obj.andiesemort[10]; })[0].name;
-        out += "<tr class='value sub'><td>Die sanit&auml;ren Anlagen:</td><td>" + val + "</td></tr>";
-        val = $.grep(data.hotels.tables.t11.options, function(e){ return e.id == obj.andiesemort[11]; })[0].name;
-        out += "<tr class='value sub'><td>Bezahlt wird:</td><td>" + val + "</td></tr>";
-        val = $.grep(data.hotels.tables.t12.options, function(e){ return e.id == obj.andiesemort[12]; })[0].name;
-        out += "<tr class='value sub'><td>Die Besondere &Uuml;berraschung bei der Sache ist:</td><td>" + val + "</td></tr>";
-        
-        out += "</table></td></tr>";
+    if (val.sub) {
+      val = $.grep(val.sub.options, function(e){ return e.id == obj.zielpunkt[1]; })[0];
+      out += "<tr class='value sub'><td>" + val.name + "</td></tr>";
     }
-    
     
   //und es dort
     out += "<tr class='label'><td>und es dort...</td></tr>";
-    val = $.grep(dat.t37.options, function(e){ return e.id == obj.undesdort[0]; })[0];
+    val = $.grep(dat.t25.options, function(e){ return e.id == obj.undesdort[0]; })[0];
     out += "<tr class='value'><td>" + val.name + "</td></tr>";
     if (obj.undesdort.length == 8) {
       out += "<tr class='value'><td>";
@@ -194,10 +147,10 @@ function Wildnisabenteuer(input) {
       val = " " + $.grep(dat.t8.options, function(e){ return e.id == obj.undesdort[7]; })[0].name;
       out += "<tr class='value sub'><td>Tick:</td><td>" + val + "</td></tr>";
       out += "</table></td></tr>";
-      
     }
+    
     out += "<tr class='label'><td>Abschliessend sollen die Spieler...</td></tr>";
-    val = $.grep(dat.t38.options, function(e){ return e.id == obj.abschliessend[0]; })[0];
+    val = $.grep(dat.t26.options, function(e){ return e.id == obj.abschliessend[0]; })[0];
     out += "<tr class='value'><td>" + val.name + "</td></tr>";
     if (obj.abschliessend.length == 8) {
       out += "<tr class='value'><td>";
@@ -219,19 +172,17 @@ function Wildnisabenteuer(input) {
       val = " " + $.grep(dat.t8.options, function(e){ return e.id == obj.abschliessend[7]; })[0].name;
       out += "<tr class='value sub'><td>Tick:</td><td>" + val + "</td></tr>";
       out += "</table></td></tr>";
-      
     }
     
     out += "<tr class='label'><td>Als Transportmittel mag dienen...</td></tr>";
-    val = $.grep(dat.t39.options, function(e){ return e.id == obj.transportmittel[0]; })[0];
+    val = $.grep(dat.t27.options, function(e){ return e.id == obj.transportmittel[0]; })[0];
     out += "<tr class='value'><td>" + val.name + "</td></tr>";
-    
     
   //Gegenspieler
     out += "<tr class='label'><td>Der oder die Gegenspieler...</td></tr>";
     out += "<tr class='value'><td colspan=2><table>";
-    val = $.grep(dat.t12.options, function(e){ return e.id == obj.gegenspieler[0]; })[0].name;
-    val += " " + $.grep(dat.t13.options, function(e){ return e.id == obj.gegenspieler[1]; })[0].name;
+    val = $.grep(dat.t14.options, function(e){ return e.id == obj.gegenspieler[0]; })[0].name;
+    val += " " + $.grep(dat.t15.options, function(e){ return e.id == obj.gegenspieler[1]; })[0].name;
     val = val.replace(/\./g, "");
     out += "<tr class='value sub'><td colspan=2>" + val + "</td></tr>";
     out += "<tr class='label sub'><td colspan=2>Deren Boss:</td></tr>";
@@ -254,7 +205,7 @@ function Wildnisabenteuer(input) {
     
   //Komplikationen
     out += "<tr class='label'><td>Komplikationen...</td></tr>";
-    val = $.grep(dat.t40.options, function(e){ return e.id == obj.komplikationen[0]; })[0];
+    val = $.grep(dat.t28.options, function(e){ return e.id == obj.komplikationen[0]; })[0];
     out += "<tr class='value'><td>" + val.name + "</td></tr>";
     if (obj.komplikationen.length == 8) {
       out += "<tr class='value'><td>";
@@ -345,7 +296,6 @@ function Wildnisabenteuer(input) {
       out += "</table></td></tr>";
       
     }
-    
     out += "</table></td></tr>";
 		return out;
 	};

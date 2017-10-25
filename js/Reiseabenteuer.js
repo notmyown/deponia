@@ -7,7 +7,6 @@ function Reiseabenteuer(input) {
 		}
 	};
 	this.table = function() {
-		console.log(obj);
 		var dat = data.adventures.tables;
 		var out = "<table>";
 		//Titel
@@ -150,7 +149,7 @@ function Reiseabenteuer(input) {
 			out += "</table></td></tr>";
 			
 		}
-		out += "<tr class='label'><td>Abschlie&szlig;end sollen die Spieler...</td></tr>";
+		out += "<tr class='label'><td>Abschliessend sollen die Spieler...</td></tr>";
 		val = $.grep(dat.t20.options, function(e){ return e.id == obj.abschliessend[0]; })[0];
 		out += "<tr class='value'><td>" + val.name + "</td></tr>";
 		if (obj.abschliessend.length == 8) {
@@ -203,6 +202,8 @@ function Reiseabenteuer(input) {
 		val = " " + $.grep(dat.t8.options, function(e){ return e.id == obj.gegenspieler[8]; })[0].name;
 		out += "<tr class='value sub'><td>Tick:</td><td>" + val + "</td></tr>";
 		out += "</table></td></tr>";
+		
+		//Komplikationen
 		out += "<tr class='label'><td>Komplikationen...</td></tr>";
 		val = $.grep(dat.t22.options, function(e){ return e.id == obj.komplikationen[0]; })[0];
 		out += "<tr class='value'><td>" + val.name + "</td></tr>";

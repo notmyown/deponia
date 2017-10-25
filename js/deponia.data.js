@@ -640,7 +640,7 @@ data = {
 					},
 					{
 						id : 12,
-						name : "sind Raucherzimmer, obwhol Nichtraucher gebucht wurde",
+						name : "sind Raucherzimmer, obwohl Nichtraucher gebucht wurde",
 					},
 				],
 			},
@@ -922,7 +922,7 @@ data = {
 					},
 					{
 						id : 9,
-						name : "Das hotel bietet eine Kundenkarte an",
+						name : "Das Hotel bietet eine Kundenkarte an",
 					},
 					{
 						id :10,
