@@ -246,6 +246,22 @@ function Deponia(data) {
           console.log(old);
         } 
       });
+      $(".charimageselector .center span").click(function(e) {
+        e.preventDefault();
+        $(".charimageselector .center INPUT").trigger('click');
+      });
+      $(".charimageselector .center INPUT").change(function(e) {
+        $(".charimageimg img").attr("src", $(this).val());
+        console.log(this.files);
+        console.log(URL.createObjectURL(e.target.files[0]));
+        var reader = new FileReader();
+        reader.onload = function(){
+          var output = document.getElementById('output');
+          $(".charimageimg img").attr("src", reader.result);
+        };
+        reader.readAsDataURL(e.target.files[0]);
+      });
+      
     },
     select : function(charid) {
       var out = "<div class='table'><div class='tr'><div class='td'>";
@@ -255,7 +271,7 @@ function Deponia(data) {
       out += "    <div class='charimageimg'>";
       out += "      <img src='./img/char/default/1.png' width=100%/>";
       out += "    </div>";
-      out += "    <div class='charimageselector'><div class='arrow left'></div><div class='center'>Aus Datei</div><div class='arrow right'></div></div>";
+      out += "    <div class='charimageselector'><div class='arrow left'></div><div class='center'><span>Aus Datei</span><input type='file'/></div><div class='arrow right'></div></div>";
       out += "  </div>";
       out += " <div class='charvalues'>";
       out += " <div class='table'>";

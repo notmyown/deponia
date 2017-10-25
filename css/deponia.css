@@ -338,6 +338,10 @@ a:link {
     cursor: pointer;
 }
 
+.charcontainer .charimage .charimageselector  .center INPUT {
+	display: none;
+}
+
 .charcontainer .charimage .charimageselector {
     background: url(../img/char/nav.png) no-repeat transparent;
     width: 260px;
