@@ -1,25 +1,23 @@
 <html>
-  <head>
-    <link rel="manifest" href="js/manifest.json">
-    <link rel="stylesheet" href="css/deponia_export.css" type="text/css" charset="utf-8" />
-    <script src="js/jquery-1.7.2.min.js"></script>
-	<script src="js/deponia.data.js"></script>
-	<script src="js/Reiseabenteuer.js"></script>
-	<script src="js/Uberseeabenteuer.js"></script>
-	<script src="js/Stadtabenteuer.js"></script>
-	<script src="js/Wildnisabenteuer.js"></script>
-	<script src="js/Abenteuer.js"></script>
-	<script src="js/deponia_export.js"></script>
-  </head>
-  <body>
-	<div class='main'>
-	</div>
+<head>
+<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+<meta content="utf-8" http-equiv="encoding">
+<link rel="manifest" href="js/manifest.json">
+<link rel="stylesheet" href="css/deponia_export.css" type="text/css" />
+<script src="js/jquery-1.7.2.min.js"></script>
+<script src="js/deponia.data.js"></script>
+<script src="js/Formatter.js"></script>
+<script src="js/Abenteuer.js"></script>
+<script src="js/deponia_export.js"></script>
+</head>
+<body>
+	<div class='main'></div>
 	<script>
-      var deponia;
-      $(document).ready(function() {
-        deponia = new DeponiaExport(data);
-		deponia.func.init();
-      });
+    var deponia;
+    $(document).ready(function() {
+      deponia = new DeponiaExport(data);
+      deponia.func.init();
+    });
   </script>
-  </body>
+</body>
 </html>

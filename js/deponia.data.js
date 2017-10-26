@@ -2,7 +2,7 @@ data = {
 	shops : {
 		tables : {
 			t1 : {
-				name : "Der Shop heisst ...",
+				name : "Der Shop heisst...",
 				options : [
 					{
 						id : 2,
@@ -51,7 +51,7 @@ data = {
 				],
 			},
 			t2 : {
-				name : "Der Shop heisst ... (Mitte)",
+				name : "Der Shop heisst... (Mitte)",
 				options : [
 					{
 						id : 2,
@@ -100,7 +100,7 @@ data = {
 				],
 			},
 			t3 : {
-				name : "Der Shop heisst ... (Ende)",
+				name : "Der Shop heisst... (Ende)",
 				options : [
 					{
 						id : 2,
@@ -149,7 +149,7 @@ data = {
 				],
 			},
 			t4 : {
-				name : "Der Shop steht ...",
+				name : "Der Shop steht...",
 				caption : "so nicht anders festgelegt",
 				options : [
 					{
@@ -199,7 +199,7 @@ data = {
 				],
 			},
 			t5 : {
-				name : "Hinter der Theke steht ...",
+				name : "Hinter der Theke steht...",
 				options : [
 					{
 						id : 2,
@@ -248,7 +248,7 @@ data = {
 				],
 			},
 			t6 : {
-				name : "Angebotene Waren sind ...",
+				name : "Angebotene Waren sind...",
 				caption : "Bei Bedarf so nicht anders durch den Namen vorgegeben",
 				options : [
 					{
@@ -298,7 +298,7 @@ data = {
 				],
 			},
 			t7 : {
-				name : "Bezahlt wird ...",
+				name : "Bezahlt wird...",
 				options : [
 					{
 						id : 2,
@@ -351,7 +351,7 @@ data = {
 	hotels : {
 		tables : {
 			t1 : {
-				name : "Der Hotel heisst ...",
+				name : "Der Hotel heisst...",
 				options : [
 					{
 						id : 2,
@@ -400,7 +400,7 @@ data = {
 				],
 			},
 			t2 : {
-				name : "Der Hotel heisst ... (Mitte)",
+				name : "Der Hotel heisst... (Mitte)",
 				options : [
 					{
 						id : 2,
@@ -449,7 +449,7 @@ data = {
 				],
 			},
 			t3 : {
-				name : "Der Hotel heisst ... (Ende)",
+				name : "Der Hotel heisst... (Ende)",
 				options : [
 					{
 						id : 2,
@@ -498,7 +498,7 @@ data = {
 				],
 			},
 			t4 : {
-				name : "Das Hotel liegt ...",
+				name : "Das Hotel liegt...",
 				options : [
 					{
 						id : 2,
@@ -547,7 +547,7 @@ data = {
 				],
 			},
 			t5 : {
-				name : "Das Hotel-Team ...",
+				name : "Das Hotel-Team...",
 				options : [
 					{
 						id : 2,
@@ -596,7 +596,7 @@ data = {
 				],
 			},
 			t6 : {
-				name : "Die Zimmer ...",
+				name : "Die Zimmer...",
 				options : [
 					{
 						id : 2,
@@ -645,7 +645,7 @@ data = {
 				],
 			},
 			t7 : {
-				name : "Das Fr&uuml;hst&uuml;ck ...",
+				name : "Das Fr&uuml;hst&uuml;ck...",
 				options : [
 					{
 						id : 2,
@@ -694,7 +694,7 @@ data = {
 				],
 			},
 			t8 : {
-				name : "Die Betten ...",
+				name : "Die Betten...",
 				options : [
 					{
 						id : 2,
@@ -743,7 +743,7 @@ data = {
 				],
 			},
 			t9 : {
-				name : "Ausgeschenkt wird ...",
+				name : "Ausgeschenkt wird...",
 				options : [
 					{
 						id : 2,
@@ -841,7 +841,7 @@ data = {
 				],
 			},
 			t11 : {
-				name : "Bezahlt wird ...",
+				name : "Bezahlt wird...",
 				options : [
 					{
 						id : 2,
@@ -890,7 +890,7 @@ data = {
 				],
 			},
 			t12 : {
-				name : "Die Besondere &Uuml;berraschung bei der Sache ist ...",
+				name : "Die Besondere &Uuml;berraschung bei der Sache ist...",
 				options : [
 					{
 						id : 2,
@@ -1732,82 +1732,102 @@ data = {
 					{
 						id : 1,
 						name : "der reale Vorname des Spielers zu deiner Rechten",
+						dynamic : true,
 					},
 					{
 						id : 2,
 						name : "der reale Vorname des Spielers zu deiner Linken",
+						dynamic : true,
 					},
 					{
 						id : 3, 
 						name : "der Name des &auml;ltesten Spielers am Tisch",
+						dynamic : true,
 					},
 					{
 						id : 4, 
 						name : "der Name des j&uuml;ngsten Spielers am Tisch",
+						dynamic : true,
 					},
 					{
 						id : 5, 
 						name : "der Name des aktuellen Monats r&uuml;ckw&auml;rts gesprochen",
+						dynamic : true,
 					},
 					{
 						id : 6, 
 						name : "ein zuf&auml;lliger Markenname eines Produktes, welches auf dem Tisch steht.",
+						dynamic : true,
 					},
 					{
 						id : 7, 
 						name : "der Name des Lieblingssportlers eines zuf&auml;llig ausgew&auml;hlten Spielers.",
+						dynamic : true,
 					},
 					{
 						id : 8, 
 						name : "der Name des Lieblingsschauspielers eines zuf&auml;llig ausgew&auml;hlten Spielers",
+						dynamic : true,
 					},
 					{
 						id : 9, 
 						name : "der Name einer Lieblings-Computerspielfigur eines zuf&auml;lligen Spielers",
+						dynamic : true,
 					},
 					{
 						id : 10, 
 						name : "der Name des Lieblingshaustieres eines zuf&auml;llig ausgew&auml;hlten Spielers",
+						dynamic : true,
 					},
 					{
 						id : 11, 
 						name : "W&uuml;rfel einen W6 .. die Zahl dann r&uuml;ckw&auml;rts gesprochen",
+						dynamic : true,
 					},
 					{
 						id : 12, 
 						name : "der Name eines technischen Ger&auml;tes, das ein Spieler dabei hat (Handy, Tablet, F&ouml;n usw.)",
+						dynamic : true,
 					},
 					{
 						id : 13, 
 						name : "der Name eines gehassten Lehrers eines Spielers",
+						dynamic : true,
 					},
 					{
 						id : 14, 
 						name : "ein Name den der Spieler zu deiner rechten &uuml;berhaupt nicht mag",
+						dynamic : true,
 					},
 					{
 						id : 15, 
 						name : "ein Name den der Spieler zu deiner linken mag",
+						dynamic : true,
 					},
 					{
 						id : 16, 
 						name : "der Ort in dem ihr gerade seid r&uuml;ckw&auml;rts gesprochen",
+						dynamic : true,
 					},
 					{
 						id : 17, 
 						name : "der Name eines Artikels der sich in einem Klo in der N&auml;he befindet.",
+						dynamic : true,
 					},
 					{
 						id : 18, 
 						name : "der Name des liebsten Science Fiction Charakter eines zuf&auml;lligen Spielers",
+						dynamic : true,
 					},
 					{
 						id : 19,
 						name : "der Name der liebsten Automarke eines zuf&auml;lligen Spielers",
+						dynamic : true,
 					},
 					{
 						id : 20, 
-						name : "Patzer (also der Vorname des Spielleiters)"
+						name : "Patzer (also der Vorname des Spielleiters)",
+						dynamic : true,
 					},
 				],
 			},
@@ -1980,12 +2000,13 @@ data = {
 					{
 						id : 20,
 						name : "...(Patzer, Name des SL)",
+						dynamic : true,
 					},
 
 				],
 			},
 			t5 : {
-				name : "Der NSC ist ein (erster Teil) ...",
+				name : "Der NSC ist ein (erster Teil)...",
 				dice : "1W20",
 				options : [
 					{
@@ -2071,7 +2092,7 @@ data = {
 				],
 			},
 			t6 : {
-				name : "Der NSC ist ein (zweiter Teil) ...",
+				name : "Der NSC ist ein (zweiter Teil)...",
 				dice : "1W20",
 				options : [
 					{
@@ -2153,6 +2174,7 @@ data = {
 					{
 						id : 20,
 						name : "...(Patzer, Beruf des SL)",
+						dynamic : true,
 					},
 				],
 			},
@@ -2239,6 +2261,7 @@ data = {
 					{
 						id : 20,
 						name : "Patzer (als ein Hobby des SL)",
+						dynamic : true,
 					},						
 				],
 			},
@@ -2325,11 +2348,12 @@ data = {
 					{
 						id : 20,
 						name : "Er/Sie (Patzer, also eine Macke des SL)",
+						dynamic : true,
 					}
 				],
 			},
 			t9 : {
-				name : "Die Spieler begegnen dem NSC am folgenden Ort...",
+				name : "Die Spieler begegnen dem Auftraggeber am folgenden Ort...",
 				dice : "1W20",
 				options : [
 					{
@@ -2501,7 +2525,7 @@ data = {
 				],
 			},
 			t11 : {
-				name : "Zuf&auml;lliger Gegenstand erster Teil",
+				name : "Zuf&auml;lliger Gegenstand zweiter Teil",
 				dice : "1W20",
 				options : [
 					{
@@ -2764,7 +2788,7 @@ data = {
 				options : [
 					{
 						id : 1,
-						name : "Eine sich „die roten“ ...",
+						name : "Sich 'die Roten' nennende ...",
 					},
 					{
 						id : 2,
@@ -2931,7 +2955,7 @@ data = {
 				],
 			},
 			t16 : {
-				name : "Belohnungen ...",
+				name : "Belohnungen...",
 				dice : "1W12",
 				options : [
 					{
@@ -2987,7 +3011,7 @@ data = {
 				],
 			},
 			t17 : {
-				name : "Die Helden sollen dem Auftraggeber folgendes ...",
+				name : "Die Spieler sollen dem Auftraggeber folgendes...",
 				dice : "1W6",
 				options : [
 					{
@@ -3008,7 +3032,8 @@ data = {
 				],
 			},
 			t18 : {
-				name : "Zielpunkt der Reise ...",
+				name : "Zielpunkt der Reise...",
+				caption : "Das Ziel der Reise muss auf dem gleichen Kontinent liegen.",
 				dice : "1W6",
 				options : [
 					{
@@ -3044,7 +3069,7 @@ data = {
 				],
 			},
 			t19 : {
-				name : "... und es dort",
+				name : "und es dort...",
 				dice : "1W4",
 				options : [
 					{
@@ -3067,7 +3092,7 @@ data = {
 				],
 			},
 			t20 : {
-				name : "Abschliessend sollen die Helden ...",
+				name : "Abschliessend sollen die Spieler...",
 				dice : "1W4",
 				options : [
 					{
@@ -3090,7 +3115,7 @@ data = {
 				],
 			},
 			t21 : {
-				name : "Als Transportmittel mag dienen ...",
+				name : "Als Transportmittel mag dienen...",
 				dice : "1W12",
 				options : [
 					{
@@ -3156,7 +3181,7 @@ data = {
 				],
 			},
 			t22 : {
-				name : "Komplikationen ...",
+				name : "Komplikationen...",
 				dice : "1W12",
 				options : [
 					{
@@ -3211,7 +3236,7 @@ data = {
 				]
 			},
 			t23 : {
-				name : "Die Helden sollen dem Auftraggeber folgendes ...",
+				name : "Die Spieler sollen dem Auftraggeber folgendes...",
 				dice : "1W6/2",
 				options : [
 					{
@@ -3232,7 +3257,7 @@ data = {
 				],
 			},
 			t24 : {
-				name : "Zielpunkt der Reise ...",
+				name : "Zielpunkt der Reise...",
 				dice : "1W4",
 				options : [
 					{
@@ -3258,7 +3283,7 @@ data = {
 				],
 			},
 			t25 : {
-				name : "... und es dort",
+				name : "und es dort...",
 				dice : "1W4",
 				options : [
 					{
@@ -3281,7 +3306,7 @@ data = {
 				],
 			},
 			t26 : {
-				name : "Abschliessend sollen die Helden ...",
+				name : "Abschliessend sollen die Spieler...",
 				dice : "1W4",
 				options : [
 					{
@@ -3304,7 +3329,7 @@ data = {
 				],
 			},
 			t27 : {
-				name : "Als Transportmittel mag dienen ...",
+				name : "Als Transportmittel mag dienen...",
 				dice : "1W12",
 				options : [
 					{
@@ -3370,7 +3395,7 @@ data = {
 				],
 			},
 			t28 : {
-				name : "Komplikationen ...",
+				name : "Komplikationen...",
 				dice : "1W12",
 				options : [
 					{
@@ -3424,7 +3449,7 @@ data = {
 				]
 			},
 			t29 : {
-				name : "Die Helden sollen f&uuml;r den Auftraggeber folgendes erledigen ...",
+				name : "Die Spieler sollen dem Auftraggeber folgendes...",
 				dice : "1W6",
 				options : [
 					{
@@ -3460,7 +3485,7 @@ data = {
 				],
 			},
 			t30 : {
-				name : "aus folgender &Ouml;rtlichkeit ...",
+				name : "aus folgender &Ouml;rtlichkeit...",
 				dice : "1W12",
 				options : [
 					{
@@ -3516,7 +3541,7 @@ data = {
 				]
 			},
 			t31 : {
-				name : "Komplikationen ...",
+				name : "Komplikationen...",
 				dice : "1W12",
 				options : [
 					{
@@ -3571,7 +3596,7 @@ data = {
 				]
 			},
 			t32 : {
-				name : "Abschliessend sollen die Helden ...",
+				name : "Abschliessend sollen die Spieler...",
 				dice : "1W4",
 				options : [
 					{
@@ -3594,7 +3619,7 @@ data = {
 				],
 			},
 			t33 : {
-				name : "Besonderheiten w&auml;hrend der Mission ...",
+				name : "Besonderheiten w&auml;hrend der Mission...",
 				dice : "1W12",
 				options : [
 					{
@@ -3650,7 +3675,7 @@ data = {
 				],
 			},
 			t34 : {
-				name : "Die Helden treffen den Auftraggeber an folgendem Ort ...",
+				name : "Die Spieler begegnen dem Auftraggeber am folgenden Ort...",
 				dice : "1W12",
 				options : [
 					{
@@ -3704,7 +3729,7 @@ data = {
 				],
 			},
 			t35 : {
-				name : "Die Helden sollen dem Auftraggeber folgendes ...",
+				name : "Die Spieler sollen dem Auftraggeber folgendes...",
 				dice : "1W6/2",
 				options : [
 					{
@@ -3725,7 +3750,7 @@ data = {
 				],
 			},
 			t36 : {
-				name : "An diesem Ort ...",
+				name : "An diesem Ort...",
 				dice : "1W12",
 				options : [
 					{
@@ -3781,7 +3806,7 @@ data = {
 				],
 			},
 			t37 : {
-				name : "... und dort",
+				name : "und es dort...",
 				dice : "1W4",
 				options : [
 					{
@@ -3804,7 +3829,7 @@ data = {
 				],
 			},
 			t38 : {
-				name : "Abschliessend sollen die Helden ...",
+				name : "Abschliessend sollen die Spieler...",
 				dice : "1W4",
 				options : [
 					{
@@ -3827,7 +3852,7 @@ data = {
 				],
 			},
 			t39 : {
-				name : "Als Transportmittel mag dienen ...",
+				name : "Als Transportmittel mag dienen...",
 				dice : "1W12",
 				options : [
 					{
@@ -3893,7 +3918,7 @@ data = {
 				],
 			},
 			t40 : {
-				name : "Komplikationen ...",
+				name : "Komplikationen...",
 				dice : "1W12",
 				options : [
 					{

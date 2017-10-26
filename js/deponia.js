@@ -13,6 +13,7 @@ function Deponia(data) {
     $("#menu-item-generator-nsc .sub-sub-menu .nsc_generator a").click(function() {
       var id = $(this).parent().attr('id').split("nsc_").pop();
       instance.func.nsc.content(id);
+      $(".main .maincontent .table .button.submitall").click();
     });
     
     // Dropdown für die Abenteuergeneratoren im Hauptmenü erstellen
@@ -38,14 +39,17 @@ function Deponia(data) {
     $("#menu-item-generator-places .sub-sub-menu .place_generator a").click(function() {
       var id = $(this).parent().attr('id').split("places_").pop();
       instance.func.places.content(id);
+      $(".main .maincontent .table .button.submitall").click();
     });
     
     $("#menu-item-generator-char a").click(function() {
       instance.func.char.content();
+      $(".main .maincontent .table .button.submitall").click();
     });
     
     $("#menu-item-home a").click(function() {
       instance.func.home.content();
+      $(".main .maincontent .table .button.submitall").click();
     });
     
     $("#menu-item-home a").click();
@@ -91,6 +95,10 @@ function Deponia(data) {
             out += instance.func.adventure.renderNSCGroupTable(id + "_sub", null, false, "Gruppierung:");
             out += "<div class='tr " + id + "_sub'><div class='td caption perc100'>Deren Boss:</div></div>";
             out += instance.func.adventure.renderNSCTable(id + "_sub");
+          }  else if (result.func == "group_water") {
+            out += instance.func.adventure.renderNSCGroupTable(id + "_sub", null, true, "Gruppierung:");
+            out += "<div class='tr " + id + "_sub'><div class='td caption perc100'>Deren Boss:</div></div>";
+            out += instance.func.adventure.renderNSCTable(id + "_sub");
           } else if (result.func == "hotel") {
             out += instance.func.places.renderHotelTable(id + "_sub", "inAdventure");
           } else if (result.func == "shop") {
@@ -109,6 +117,9 @@ function Deponia(data) {
       });
     },
     export : function(type) {
+      if ("char" == type) {
+        return;
+      }
       var obj = new Abenteuer();
       obj.func.type = type;
       
@@ -124,7 +135,7 @@ function Deponia(data) {
       });
       
       //Ort des aufeinandertreffens
-      obj.func.auftraggeberanort = $(".main .maincontent .adventure_row_auftraggeberanort SELECT").val();
+      obj.func.auftraggeberanort[0] = $(".main .maincontent .adventure_row_auftraggeberanort SELECT").val();
       
       //Die Helden sollen dem Auftraggeber folgendes
       obj.func.auftraggebersollen[0] = $(".main .maincontent .adventure_row_folgendes SELECT").val();
@@ -139,7 +150,7 @@ function Deponia(data) {
       });
       
       //Transportmittel
-      obj.func.transportmittel = $(".main .maincontent .adventure_row_transportmittel SELECT").val();
+      obj.func.transportmittel[0] = $(".main .maincontent .adventure_row_transportmittel SELECT").val();
       
       //Zielpunkt der Reise
       obj.func.zielpunkt[0] = $(".main .maincontent #zielpunkt_resultvalue").val();
@@ -169,6 +180,10 @@ function Deponia(data) {
       $(".main .maincontent .adventure_row_ortlichkeit_sub SELECT").each(function(id) {
         obj.func.ortlichkeit[id+1] = $(this).val();
       });
+      //Auffüllen mit 0 damit der Export funktioniert und unterscheiden kann dass es ein shop ist
+      while(obj.func.ortlichkeit.length < 11) {
+        obj.func.ortlichkeit[obj.func.ortlichkeit.length] = 0;
+      }
       
       //an diesem ort
       obj.func.andiesemort[0] = $(".main .maincontent .adventure_row_andiesemort SELECT").val();
@@ -217,6 +232,7 @@ function Deponia(data) {
       out += "<div class='tr'><div class='td'>";
       out += instance.func.char.select();
       out += "</div></div>";
+      out += "<div class='tr adventure_row_export'><div class='td random' colspan='2' align='center'><div class='button export'>Exportieren</div></div></div>";
       out += "</div>"
       $(".main .maincontent").html(out);
       $(".charimageselector .arrow").click(function() {
@@ -260,6 +276,9 @@ function Deponia(data) {
           $(".charimageimg img").attr("src", reader.result);
         };
         reader.readAsDataURL(e.target.files[0]);
+      });
+      $(".main .maincontent .table .button.export").click(function() {
+        instance.func.event.export("char");
       });
       
     },
@@ -308,7 +327,7 @@ function Deponia(data) {
       if (intype == "nsc") {
         out += "<div class='tr'><div class='th perc100'>NSC -Generator</div></div>";
         out += "<div class='tr adventure_row_all'><div class='td random perc100' align='center'><div class='button submitall'>Zuf&auml;llig</div></div></div>";
-        out += instance.func.adventure.renderNSCTable("adventure_row_nsc", "Nicht Spielbarer Charackter");
+        out += instance.func.adventure.renderNSCTable("adventure_row_nsc", "Nicht Spielbarer Charakter");
       } else if(intype == "group"){
         out += "<div class='tr'><div class='th' colspan=2>Gruppen -Generator</div></div>";
         out += "<div class='tr adventure_row_all'><div class='td random perc100' align='center'><div class='button submitall'>Zuf&auml;llig</div></div></div>";
@@ -460,7 +479,7 @@ function Deponia(data) {
       if ([0].indexOf(type) > -1) {
         out += ifa.renderOptionTable("adventure_row_folgendes", dat.t17.name, null, dat.t17);
                 
-        out += ifa.renderOptionTable("adventure_row_zielpunkt", dat.t18.name, "Das Ziel der Reise muss auf dem gleichen Kontinent liegen.", dat.t18);
+        out += ifa.renderOptionTable("adventure_row_zielpunkt", dat.t18.name, dat.t18.caption, dat.t18);
         out += "<div class='tr'><div class='td perc100'><input type='hidden' id='zielpunkt_resultvalue'/></div></div>";
         out += ifa.renderOptionTable("adventure_row_undesdort", dat.t19.name, null, dat.t19);
         out += ifa.renderOptionTable("adventure_row_abschliessend", dat.t20.name, null, dat.t20);
@@ -476,7 +495,7 @@ function Deponia(data) {
       if ([1].indexOf(type) > -1) {
         out += ifa.renderOptionTable("adventure_row_folgendes", dat.t23.name, null, dat.t23);
                 
-        out += ifa.renderOptionTable("adventure_row_zielpunkt", "Zielpunkt der Reise ...", null, dat.t24, function(elem) {
+        out += ifa.renderOptionTable("adventure_row_zielpunkt", dat.t24.name, null, dat.t24, function(elem) {
           return "<option value='" + elem.id + "'>" + elem.name + "</option>";
         });
         out += "<div class='tr'><div class='td perc100'><input type='hidden' id='zielpunkt_resultvalue'/></div></div>";
@@ -564,14 +583,29 @@ function Deponia(data) {
             var targetid = sourceid + result.add;
             source = $.grep(dat.t1.options, function(e){ return e.id == sourceid; })[0]
             var target = $.grep(dat.t1.options, function(e){ return e.id == targetid; })[0];
+            while(!target) {
+              targetid++;
+              if (targetid == sourceid) {
+                targetid++;
+              }
+              target = $.grep(dat.t1.options, function(e){ return e.id == targetid; })[0];
+            }
             var i =0;
+            if (targetid == sourceid) {
+              targetid++;
+              target = $.grep(dat.t1.options, function(e){ return e.id == targetid; })[0];
+            }
             while(target.continent != source.continent && i < 101) {
               targetid++;
+              if (targetid == sourceid) {
+                targetid++;
+              }
               i++
               if (targetid >= dat.t1.options.length) {
                 targetid = 1;
               }
               target = $.grep(dat.t1.options, function(e){ return e.id == targetid; })[0];
+              
             }
             if(target) {
               $("#zielpunkt_resultvalue").val(target.id);
@@ -595,7 +629,8 @@ function Deponia(data) {
         //ZielPunkt der Reise
         $(".main .maincontent .table #adventure_row_zielpunkt SELECT").change(function() {
           //Ziel Punkt muss auf dem gleichen Kontinent liegen
-          var theid = $(this).val();
+          var theid = parseInt($(this).val());
+          theid -= 1;
           var result = $.grep(dat.t1.options, function(e){ return e.continent == theid; });
           var source = $(".main .maincontent .table #adventure_row_startpunkt SELECT")[0];
           if (source && result) {
