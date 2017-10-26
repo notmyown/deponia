@@ -117,91 +117,112 @@ function Deponia(data) {
       });
     },
     export : function(type) {
+      var obj = null;
       if ("char" == type) {
-        return;
+        obj = new Char();
+        obj.func.name = encodeURIComponent($(".main .maincontent .charcontainer .charimage .input").val());
+        obj.func.beschreibung = encodeURIComponent($(".main .maincontent .charcontainer .charvalues .description").val());
+        obj.func.konzept = encodeURIComponent($(".main .maincontent .charcontainer .charvalues input[name=konzept]").val());
+        obj.func.dilemma = encodeURIComponent($(".main .maincontent .charcontainer .charvalues input[name=dilemma]").val());
+        obj.func.aspekte = encodeURIComponent($(".main .maincontent .charcontainer .charvalues .aspekte").val());
+        obj.func.methoden.flink = encodeURIComponent($(".main .maincontent .charcontainer .charvalues input[name=flink]").val());
+        obj.func.methoden.scharfsinnig = encodeURIComponent($(".main .maincontent .charcontainer .charvalues input[name=scharfsinnig]").val());
+        obj.func.methoden.tollkuhn = encodeURIComponent($(".main .maincontent .charcontainer .charvalues input[name=tollkuhn]").val());
+        obj.func.methoden.tuckisch = encodeURIComponent($(".main .maincontent .charcontainer .charvalues input[name=tuckisch]").val());
+        obj.func.methoden.kraftvoll = encodeURIComponent($(".main .maincontent .charcontainer .charvalues input[name=kraftvoll]").val());
+        obj.func.methoden.sorgfaltig = encodeURIComponent($(".main .maincontent .charcontainer .charvalues input[name=sorgfaltig]").val());
+        obj.func.stunts = encodeURIComponent($(".main .maincontent .charcontainer .charvalues .stunts").val());
+        obj.func.konsequenzen.leicht = encodeURIComponent($(".main .maincontent .charcontainer .charvalues input[name=leicht]").val());
+        obj.func.konsequenzen.mittel = encodeURIComponent($(".main .maincontent .charcontainer .charvalues input[name=mittel]").val());
+        obj.func.konsequenzen.schwer = encodeURIComponent($(".main .maincontent .charcontainer .charvalues input[name=schwer]").val());
+        obj.func.erholungsrate = encodeURIComponent($(".main .maincontent .charcontainer .charvalues  .erholungsrate").val());
+        obj.func.stress = $(".charcontainer .charvalues .stress .stressbar span.clicked").length;
+        obj.func.img = encodeURIComponent($(".charimageimg img").attr("src"));
+      } else {
+        var obj = new Abenteuer();
+        obj.func.type = type;
+        
+        //Startpunkt
+        obj.func.startpunkt[0] = $(".main .maincontent .adventure_row_startpunkt SELECT").val();
+        $(".main .maincontent .adventure_row_startpunkt_sub SELECT").each(function(id) {
+          obj.func.startpunkt[id+1] = $(this).val();
+        });
+        
+        //Auftraggeber
+        $(".main .maincontent .adventure_row_auftraggeber SELECT").each(function(id) {
+          obj.func.auftraggeber[id] = $(this).val();
+        });
+        
+        //Ort des aufeinandertreffens
+        obj.func.auftraggeberanort[0] = $(".main .maincontent .adventure_row_auftraggeberanort SELECT").val();
+        
+        //Die Helden sollen dem Auftraggeber folgendes
+        obj.func.auftraggebersollen[0] = $(".main .maincontent .adventure_row_folgendes SELECT").val();
+        $(".main .maincontent .adventure_row_folgendes_sub SELECT").each(function(id) {
+          obj.func.auftraggebersollen[id+1] = $(this).val();
+        });
+        
+        //und es dort
+        obj.func.undesdort[0] = $(".main .maincontent .adventure_row_undesdort SELECT").val();
+        $(".main .maincontent .adventure_row_undesdort_sub SELECT").each(function(id) {
+          obj.func.undesdort[id+1] = $(this).val();
+        });
+        
+        //Transportmittel
+        obj.func.transportmittel[0] = $(".main .maincontent .adventure_row_transportmittel SELECT").val();
+        
+        //Zielpunkt der Reise
+        obj.func.zielpunkt[0] = $(".main .maincontent #zielpunkt_resultvalue").val();
+        
+        // Der oder die Gegenspieler
+        $(".main .maincontent .adventure_row_gegenspieler_group SELECT").each(function(id) {
+          obj.func.gegenspieler[id] = $(this).val();
+        });
+        $(".main .maincontent .adventure_row_gegenspieler_boss SELECT").each(function(id) {
+          obj.func.gegenspieler[obj.func.gegenspieler.length] = $(this).val();
+        });
+        
+        //Komplikationen
+        obj.func.komplikationen[0] = $(".main .maincontent .adventure_row_komplikationen SELECT").val();
+        $(".main .maincontent .adventure_row_komplikationen_sub SELECT").each(function(id) {
+          obj.func.komplikationen[id+1] = $(this).val();
+        });
+        
+        //Abschließend sollen die Helden
+        obj.func.abschliessend[0] = $(".main .maincontent .adventure_row_abschliessend SELECT").val();
+        $(".main .maincontent .adventure_row_abschliessend_sub SELECT").each(function(id) {
+          obj.func.abschliessend[id+1] = $(this).val();
+        });
+        
+        //aus folgender Örtlichkeit
+        obj.func.ortlichkeit[0] = $(".main .maincontent .adventure_row_ortlichkeit SELECT").val();
+        $(".main .maincontent .adventure_row_ortlichkeit_sub SELECT").each(function(id) {
+          obj.func.ortlichkeit[id+1] = $(this).val();
+        });
+        //Auffüllen mit 0 damit der Export funktioniert und unterscheiden kann dass es ein shop ist
+        while(obj.func.ortlichkeit.length < 11) {
+          obj.func.ortlichkeit[obj.func.ortlichkeit.length] = 0;
+        }
+        
+        //an diesem ort
+        obj.func.andiesemort[0] = $(".main .maincontent .adventure_row_andiesemort SELECT").val();
+        $(".main .maincontent .adventure_row_andiesemort_sub SELECT").each(function(id) {
+          obj.func.andiesemort[id+1] = $(this).val();
+        });
+        
+        //Besonderheiten während der Mission
+        obj.func.besonderheiten[0] = $(".main .maincontent .adventure_row_besonderheiten SELECT").val();
+        $(".main .maincontent .adventure_row_besonderheiten_sub SELECT").each(function(id) {
+          obj.func.besonderheiten[id+1] = $(this).val();
+        });
+        
+        //Belohnung
+        obj.func.belohnung[0] = $(".main .maincontent .adventure_row_belohnung SELECT").val();
+        $(".main .maincontent .adventure_row_belohnung_sub SELECT").each(function(id) {
+          obj.func.belohnung[id+1] = $(this).val();
+        });
       }
-      var obj = new Abenteuer();
-      obj.func.type = type;
       
-      //Startpunkt
-      obj.func.startpunkt[0] = $(".main .maincontent .adventure_row_startpunkt SELECT").val();
-      $(".main .maincontent .adventure_row_startpunkt_sub SELECT").each(function(id) {
-        obj.func.startpunkt[id+1] = $(this).val();
-      });
-      
-      //Auftraggeber
-      $(".main .maincontent .adventure_row_auftraggeber SELECT").each(function(id) {
-        obj.func.auftraggeber[id] = $(this).val();
-      });
-      
-      //Ort des aufeinandertreffens
-      obj.func.auftraggeberanort[0] = $(".main .maincontent .adventure_row_auftraggeberanort SELECT").val();
-      
-      //Die Helden sollen dem Auftraggeber folgendes
-      obj.func.auftraggebersollen[0] = $(".main .maincontent .adventure_row_folgendes SELECT").val();
-      $(".main .maincontent .adventure_row_folgendes_sub SELECT").each(function(id) {
-        obj.func.auftraggebersollen[id+1] = $(this).val();
-      });
-      
-      //und es dort
-      obj.func.undesdort[0] = $(".main .maincontent .adventure_row_undesdort SELECT").val();
-      $(".main .maincontent .adventure_row_undesdort_sub SELECT").each(function(id) {
-        obj.func.undesdort[id+1] = $(this).val();
-      });
-      
-      //Transportmittel
-      obj.func.transportmittel[0] = $(".main .maincontent .adventure_row_transportmittel SELECT").val();
-      
-      //Zielpunkt der Reise
-      obj.func.zielpunkt[0] = $(".main .maincontent #zielpunkt_resultvalue").val();
-      
-      // Der oder die Gegenspieler
-      $(".main .maincontent .adventure_row_gegenspieler_group SELECT").each(function(id) {
-        obj.func.gegenspieler[id] = $(this).val();
-      });
-      $(".main .maincontent .adventure_row_gegenspieler_boss SELECT").each(function(id) {
-        obj.func.gegenspieler[obj.func.gegenspieler.length] = $(this).val();
-      });
-      
-      //Komplikationen
-      obj.func.komplikationen[0] = $(".main .maincontent .adventure_row_komplikationen SELECT").val();
-      $(".main .maincontent .adventure_row_komplikationen_sub SELECT").each(function(id) {
-        obj.func.komplikationen[id+1] = $(this).val();
-      });
-      
-      //Abschließend sollen die Helden
-      obj.func.abschliessend[0] = $(".main .maincontent .adventure_row_abschliessend SELECT").val();
-      $(".main .maincontent .adventure_row_abschliessend_sub SELECT").each(function(id) {
-        obj.func.abschliessend[id+1] = $(this).val();
-      });
-      
-      //aus folgender Örtlichkeit
-      obj.func.ortlichkeit[0] = $(".main .maincontent .adventure_row_ortlichkeit SELECT").val();
-      $(".main .maincontent .adventure_row_ortlichkeit_sub SELECT").each(function(id) {
-        obj.func.ortlichkeit[id+1] = $(this).val();
-      });
-      //Auffüllen mit 0 damit der Export funktioniert und unterscheiden kann dass es ein shop ist
-      while(obj.func.ortlichkeit.length < 11) {
-        obj.func.ortlichkeit[obj.func.ortlichkeit.length] = 0;
-      }
-      
-      //an diesem ort
-      obj.func.andiesemort[0] = $(".main .maincontent .adventure_row_andiesemort SELECT").val();
-      $(".main .maincontent .adventure_row_andiesemort_sub SELECT").each(function(id) {
-        obj.func.andiesemort[id+1] = $(this).val();
-      });
-      
-      //Besonderheiten während der Mission
-      obj.func.besonderheiten[0] = $(".main .maincontent .adventure_row_besonderheiten SELECT").val();
-      $(".main .maincontent .adventure_row_besonderheiten_sub SELECT").each(function(id) {
-        obj.func.besonderheiten[id+1] = $(this).val();
-      });
-      
-      //Belohnung
-      obj.func.belohnung[0] = $(".main .maincontent .adventure_row_belohnung SELECT").val();
-      $(".main .maincontent .adventure_row_belohnung_sub SELECT").each(function(id) {
-        obj.func.belohnung[id+1] = $(this).val();
-      });
       var enc = JSON.stringify(obj.func);
       enc = encodeURIComponent(enc);
       var win = window.open('./export.html?export=' + enc, '_blank');
@@ -242,7 +263,7 @@ function Deponia(data) {
           step = -1;
         }
         var old = $(".charimageimg img").attr("src");
-        if (old) {
+        if (old && old.indexOf("base64") == -1) {
           var splits = old.split("/");
           if (splits.length > 1) {
             old = splits[splits.length -1];
@@ -259,7 +280,8 @@ function Deponia(data) {
             }
             $(".charimageimg img").attr("src", "./img/char/default/" + newid + ".png");
           }
-          console.log(old);
+        } else {
+          $(".charimageimg img").attr("src", "./img/char/default/1.png");
         } 
       });
       $(".charimageselector .center span").click(function(e) {
@@ -268,8 +290,6 @@ function Deponia(data) {
       });
       $(".charimageselector .center INPUT").change(function(e) {
         $(".charimageimg img").attr("src", $(this).val());
-        console.log(this.files);
-        console.log(URL.createObjectURL(e.target.files[0]));
         var reader = new FileReader();
         reader.onload = function(){
           var output = document.getElementById('output');
@@ -279,6 +299,10 @@ function Deponia(data) {
       });
       $(".main .maincontent .table .button.export").click(function() {
         instance.func.event.export("char");
+      });
+      
+      $(".charcontainer .charvalues .stress .stressbar span").click(function() {
+        $(this).toggleClass("clicked");
       });
       
     },
@@ -295,11 +319,11 @@ function Deponia(data) {
       out += " <div class='charvalues'>";
       out += " <div class='table'>";
       out += "  <div class='tr'><div class='td label'>Beschreibung:</div></div>";
-      out += "  <div class='tr'><div class='td'><textarea/></div></div>";
+      out += "  <div class='tr'><div class='td'><textarea class='description'/></div></div>";
       out += "  <div class='tr'><div class='td'><label for='konzept'>Konzept:</label><input name='konzept' type='text'/></div></div>";
       out += "  <div class='tr'><div class='td'><label for='dilemma'>Dilemma:</label><input name='dilemma' type='text'/></div></div>";
       out += "  <div class='tr'><div class='td label'>Weitere Aspekte:</div></div>";
-      out += "  <div class='tr'><div class='td'><textarea/></div></div>";
+      out += "  <div class='tr'><div class='td'><textarea class='aspekte'/></div></div>";
       out += "  <div class='tr'><div class='td label'>Methoden:</div></div>";
       out += "  <div class='tr'><div class='td small'><label for='flink'>Flink:</label><input name='flink' type='text'/></div></div>";
       out += "  <div class='tr'><div class='td small'><label for='scharfsinnig'>Scharfsinnig:</label><input name='scharfsinnig' type='text'/></div></div>";
@@ -308,12 +332,13 @@ function Deponia(data) {
       out += "  <div class='tr'><div class='td small'><label for='kraftvoll'>Kraftvoll:</label><input name='kraftvoll' type='text'/></div></div>";
       out += "  <div class='tr'><div class='td small'><label for='sorgfaltig'>Sorgf&auml;ltig:</label><input name='sorgfaltig' type='text'/></div></div>";
       out += "  <div class='tr'><div class='td label'>Stunts:</div></div>";
-      out += "  <div class='tr'><div class='td'><textarea/></div></div>";
+      out += "  <div class='tr'><div class='td'><textarea class='stunts'/></div></div>";
       out += "  <div class='tr'><div class='td label'>Konsequenzen:</div></div>";
       out += "  <div class='tr'><div class='td small'><label for='leicht'>Leicht(2):</label><input name='leicht' type='text'/></div></div>";
       out += "  <div class='tr'><div class='td small'><label for='mittel'>Mittel(4):</label><input name='mittel' type='text'/></div></div>";
       out += "  <div class='tr'><div class='td small'><label for='schwer'>Schwer(6):</label><input name='schwer' type='text'/></div></div>";
-      out += "  <div class='tr'><div class='td label'>Erholungsrate: 3</div></div>";
+      out += "  <div class='tr'><div class='td label'>Erholungsrate: <input class='erholungsrate' value='3' /></div></div>";
+      out += "  <div class='tr'><div class='td'><div class='stress'><span>Stress:</span><div class='stressbar'><span/><span/><span/></div></div></div></div>";
       out += "  </div>";
       out += " </div>";
       out += "</div>";

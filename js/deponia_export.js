@@ -10,7 +10,11 @@ function DeponiaExport(data) {
     init : function() {
       var out = "";
       var obj = JSON.parse(instance.func.param("export"));
-      instance.func.adventures.table(obj);
+      if (obj.img) {
+        instance.func.chars.table(obj);
+      } else {
+        instance.func.adventures.table(obj);
+      }
 
     },
     param : function getUrlParameter(prop) {
@@ -25,6 +29,56 @@ function DeponiaExport(data) {
       });
 
       return (prop && prop in params) ? params[prop] : params;
+    },
+    chars : {
+      table : function(obj) {
+        var out = "<div class='table'><div class='tr'><div class='td'>";
+        out += "<div class='charcontainer'>";
+        out += "  <div class='charimage'>";
+        out += "    <span class='input' >" + decodeURIComponent(obj.name) + "</span>";
+        out += "    <div class='charimageimg'>";
+        out += "      <img src='" + decodeURIComponent(obj.img) + "' width=100%/>";
+        out += "    </div>";
+        out += "  </div>";
+        out += " <div class='charvalues'>";
+        out += " <div class='table'>";
+        out += "  <div class='tr'><div class='td label'>Beschreibung:</div></div>";
+        out += "  <div class='tr'><div class='td'><textarea class='description' readonly=true>" + decodeURIComponent(obj.beschreibung) + "</textarea></div></div>";
+        out += "  <div class='tr'><div class='td'><label for='konzept'>Konzept:</label><input name='konzept' type='text' readonly value='" + obj.konzept + "'/></div></div>";
+        out += "  <div class='tr'><div class='td'><label for='dilemma'>Dilemma:</label><input name='dilemma' type='text' readonly value='" + obj.dilemma + "'/></div></div>";
+        out += "  <div class='tr'><div class='td label'>Weitere Aspekte:</div></div>";
+        out += "  <div class='tr'><div class='td'><textarea class='aspekte' readonly=true>" + decodeURIComponent(obj.aspekte) + "</textarea></div></div>";
+        out += "  <div class='tr'><div class='td label'>Methoden:</div></div>";
+        out += "  <div class='tr'><div class='td small'><label for='flink'>Flink:</label><input name='flink' type='text' readonly  value='" + decodeURIComponent(obj.methoden.flink) + "'/></div></div>";
+        out += "  <div class='tr'><div class='td small'><label for='scharfsinnig'>Scharfsinnig:</label><input name='scharfsinnig' type='text' readonly value='" + decodeURIComponent(obj.methoden.scharfsinnig) + "'/></div></div>";
+        out += "  <div class='tr'><div class='td small'><label for='tollkuhn'>Tollk&uuml;hn:</label><input name='tollkuhn' type='text' readonly value='" + decodeURIComponent(obj.methoden.tollkuhn) + "'/></div></div>";
+        out += "  <div class='tr'><div class='td small'><label for='tuckisch'>T&uuml;ckisch:</label><input name='tuckisch' type='text' readonly value='" + decodeURIComponent(obj.methoden.tuckisch) + "'/></div></div>";
+        out += "  <div class='tr'><div class='td small'><label for='kraftvoll'>Kraftvoll:</label><input name='kraftvoll' type='text' readonly value='" + decodeURIComponent(obj.methoden.kraftvoll) + "'/></div></div>";
+        out += "  <div class='tr'><div class='td small'><label for='sorgfaltig'>Sorgf&auml;ltig:</label><input name='sorgfaltig' type='text' readonly value='" + decodeURIComponent(obj.methoden.sorgfaltig) + "'/></div></div>";
+        out += "  <div class='tr'><div class='td label'>Stunts:</div></div>";
+        out += "  <div class='tr'><div class='td'><textarea class='stunts' readonly=true>" + decodeURIComponent(obj.stunts)+ "</textarea></div></div>";
+        out += "  <div class='tr'><div class='td label'>Konsequenzen:</div></div>";
+        out += "  <div class='tr'><div class='td small'><label for='leicht'>Leicht(2):</label><input name='leicht' type='text' readonly value='" + decodeURIComponent(obj.konsequenzen.leicht) + "'/></div></div>";
+        out += "  <div class='tr'><div class='td small'><label for='mittel'>Mittel(4):</label><input name='mittel' type='text' readonly value='" + decodeURIComponent(obj.konsequenzen.mittel) + "'/></div></div>";
+        out += "  <div class='tr'><div class='td small'><label for='schwer'>Schwer(6):</label><input name='schwer' type='text' readonly value='" + decodeURIComponent(obj.konsequenzen.schwer) + "'/></div></div>";
+        out += "  <div class='tr'><div class='td label'>Erholungsrate: " + decodeURIComponent(obj.erholungsrate) + "</div></div>";
+        out += "  <div class='tr'><div class='td'><div class='stress'><span>Stress:</span><div class='stressbar'>";
+        var count = obj.stress;
+        var i = 0;
+        for (i = 0; i < count; i++) {
+          out += "<span class='clicked'/>";
+        }
+        for (i = i; i < 3; i++) {
+          out += "<span/>";
+        }
+        out += "</div></div></div></div>";
+        out += "  </div>";
+        out += " </div>";
+        out += "</div>";
+        out += "</div></div></div>";
+        $(".main").html(out);
+        return out;
+      }
     },
     adventures : {
       table : function(obj) {

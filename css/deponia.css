@@ -421,4 +421,32 @@ a:link {
   font-size: 13px !important;
 }
 
+.charcontainer .charvalues input.erholungsrate {
+	background: none;
+	font-weight: bold;
+	width: 68%;
+}
+
+.charcontainer .charvalues .stress > SPAN {
+  position: absolute;
+  left: 0;
+  color: black;
+}
+
+.charcontainer .charvalues .stress .stressbar {
+	position: absolute;
+  right: 0;
+}
+
+.charcontainer .charvalues .stress .stressbar span {
+	width: 64px;
+	height: 45px;
+	background: url(../img/char/stress.png);
+	display: inline-block;
+}
+
+.charcontainer .charvalues .stress .stressbar span.clicked {
+	background: url(../img/char/stress_clicked.png);
+}
+
 
