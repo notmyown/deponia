@@ -219,7 +219,7 @@ TD {
 .charcontainer .charvalues .stress .stressbar span {
   width: 64px;
   height: 45px;
-  background: url(../img/char/stress.png);
+  background: url(../img/char/stress_empty.png);
   display: inline-block;
 }
 
