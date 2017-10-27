@@ -94,11 +94,41 @@ function DeponiaExport(data) {
           var tmp = "<table>";
           tmp += "<tr><th class='label'>Das Abenteuer enth&auml;lt dynamische Werte.</br> Bitte trage zuerst die Werte ein um die &Uuml;bersicht zu generieren!</th></tr>";
           $(dynamics).each(function() {
-            tmp += "<tr><td  class='label'>" + this.dynamic + "</td></tr><tr><td><input id='" + this.name.replace(/%/g,"") + "'/></td></tr>";
+            tmp += "<tr><td  class='label'>" + this.dynamic + "</td></tr><tr><td><input id='" + this.name.replace(/%/g,"") + "'/>";
+            if (this.func) {
+              if (this.func.indexOf("w6") > -1) {
+                tmp += "<div class='in in_w6'></div>";
+              }
+              if (this.func.indexOf("month") > -1) {
+                tmp += "<div class='in in_month'></div>";
+              }
+              if (this.func.indexOf("revert") > -1) {
+                tmp += "<div class='in in_revert'></div>";
+              }
+            }
+            tmp += "</td></tr>";
           });
           tmp += "<tr><td colspan=2><div class='button okdynamics'>OK</div></td></tr>";
           tmp += "</table>";
           $(".main .maincontent").html(tmp);
+          $(".main .in_month").click(function() {
+            var arr = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"];
+            var d = new Date();
+            $(this).prevAll("INPUT").val(arr[d.getMonth()]);
+          });
+          $(".main .in_w6").click(function() {
+            var rand = Math.floor(Math.random() * (6));
+            var arr = ["Eins", "Zwei", "Drei", "Vier", "Fünf", "Sechs"];
+            $(this).prevAll("INPUT").val(arr[rand]);
+          });
+          $(".main .in_revert").click(function() {
+            var val = $(this).prevAll("INPUT").val();
+            val = val.split("").reverse().join("").toLowerCase();
+            if (val[0]) {
+              val = val[0].toUpperCase() + val.substr(1, val.length);
+            }
+            $(this).prevAll("INPUT").val(val);
+          });
           $(".main .okdynamics").click(function() {
             $(dynamics).each(function() {
               var val = $(".main #" + this.name.replace(/%/g,"")).val();

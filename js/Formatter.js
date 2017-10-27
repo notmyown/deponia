@@ -21,7 +21,10 @@ function Formatter(input) {
     row : function(table, attribute, caption, water) {
       var out = "";
       out += "<tr class='label'><td>" + caption + "</td></tr>";
-      var val = that.grep(table.options, obj[attribute][0]);
+      var val = {};
+      if (table) { 
+        val = that.grep(table.options, obj[attribute][0]);
+      }
       if (val.sub) {
         out += "<tr class='value'><td>" + val.name + "</td></tr>";
         val = that.grep(val.sub.options, obj[attribute][1]);
@@ -186,7 +189,7 @@ function Formatter(input) {
       out += that.row.row(dat.t1, "startpunkt", "Startpunkt der Reise...");
       
       //Der Auftaggeber
-      out += that.row.row(dat.t1, "auftraggeber", "Der Auftraggeber...");
+      out += that.row.row(null, "auftraggeber", "Der Auftraggeber...");
   
       // Die Spieler begegnen dem Auftraggeber am folgenden Ort
       out += that.row.row(dat.t9, "auftraggeberanort", dat.t9.name);
@@ -207,7 +210,7 @@ function Formatter(input) {
       out += that.row.row(dat.t21, "transportmittel", dat.t21.name);
       
       //Gegenspieler
-      out += that.row.row(dat.t19, "gegenspieler", "Der oder die Gegenspieler...", false);
+      out += that.row.row(null, "gegenspieler", "Der oder die Gegenspieler...", false);
       
       //Komplikationen
       out += that.row.row(dat.t22, "komplikationen", dat.t22.name);
@@ -230,7 +233,7 @@ function Formatter(input) {
         out += that.row.row(dat.t1, "startpunkt", "Startpunkt der Reise...");
         
         //Der Auftaggeber
-        out += that.row.row(dat.t1, "auftraggeber", "Der Auftraggeber...");
+        out += that.row.row(null, "auftraggeber", "Der Auftraggeber...");
     
         // Die Spieler begegnen dem Auftraggeber am folgenden Ort
         out += that.row.row(dat.t9, "auftraggeberanort", dat.t9.name);
@@ -251,7 +254,7 @@ function Formatter(input) {
         out += that.row.row(dat.t27, "transportmittel", dat.t27.name);
         
         //Gegenspieler
-        out += that.row.row(dat.t19, "gegenspieler", "Der oder die Gegenspieler...", true);
+        out += that.row.row(null, "gegenspieler", "Der oder die Gegenspieler...", true);
         
         //Komplikationen
         out += that.row.row(dat.t28, "komplikationen", dat.t28.name);
@@ -273,7 +276,7 @@ function Formatter(input) {
         out += that.row.row(dat.t1, "startpunkt", "Startpunkt der Reise...");
         
         //Der Auftaggeber
-        out += that.row.row(dat.t1, "auftraggeber", "Der Auftraggeber...");
+        out += that.row.row(null, "auftraggeber", "Der Auftraggeber...");
     
         // Die Spieler begegnen dem Auftraggeber am folgenden Ort
         out += that.row.row(dat.t9, "auftraggeberanort", dat.t9.name);
@@ -288,7 +291,7 @@ function Formatter(input) {
         out += that.row.row(dat.t32, "abschliessend", dat.t32.name);
         
         //Gegenspieler
-        out += that.row.row(dat.t19, "gegenspieler", "Der oder die Gegenspieler...", false);
+        out += that.row.row(null, "gegenspieler", "Der oder die Gegenspieler...", false);
         
         //Komplikationen
         out += that.row.row(dat.t31, "komplikationen", dat.t31.name);
@@ -314,7 +317,7 @@ function Formatter(input) {
         out += that.row.row(dat.t1, "startpunkt", "Startpunkt der Reise...");
         
         //Der Auftaggeber
-        out += that.row.row(dat.t1, "auftraggeber", "Der Auftraggeber...");
+        out += that.row.row(null, "auftraggeber", "Der Auftraggeber...");
     
         // Die Spieler begegnen dem Auftraggeber am folgenden Ort
         out += that.row.row(dat.t34, "auftraggeberanort", dat.t34.name);
@@ -335,7 +338,7 @@ function Formatter(input) {
         out += that.row.row(dat.t39, "transportmittel", dat.t39.name);
         
         //Gegenspieler
-        out += that.row.row(dat.t19, "gegenspieler", "Der oder die Gegenspieler...", false);
+        out += that.row.row(null, "gegenspieler", "Der oder die Gegenspieler...", false);
         
         //Komplikationen
         out += that.row.row(dat.t40, "komplikationen", dat.t40.name);

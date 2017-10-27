@@ -1753,6 +1753,7 @@ data = {
 						id : 5, 
 						name : "der Name des aktuellen Monats r&uuml;ckw&auml;rts gesprochen",
 						dynamic : true,
+						func : "month revert",
 					},
 					{
 						id : 6, 
@@ -1783,6 +1784,7 @@ data = {
 						id : 11, 
 						name : "W&uuml;rfel einen W6 .. die Zahl dann r&uuml;ckw&auml;rts gesprochen",
 						dynamic : true,
+						func: "random w6 revert",
 					},
 					{
 						id : 12, 
@@ -1808,6 +1810,7 @@ data = {
 						id : 16, 
 						name : "der Ort in dem ihr gerade seid r&uuml;ckw&auml;rts gesprochen",
 						dynamic : true,
+						func: "revert"
 					},
 					{
 						id : 17, 

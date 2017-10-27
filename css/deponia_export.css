@@ -117,6 +117,26 @@ TH.label {
   text-decoration:none !important;
 }
 
+
+.main .in {
+  width: 1.5em;
+  height: 1.5em;
+  background-size: 100% 100% !important;
+  background: url(../img/random.png) no-repeat;	
+  float: right;
+  margin: 2px;
+}
+
+.main .in.in_w6 {
+	background: url(../img/bttn_w6.png) no-repeat;  
+}
+.main .in.in_month {
+  background: url(../img/bttn_month.png) no-repeat;  
+}
+.main .in.in_revert {
+  background: url(../img/bttn_revert.png) no-repeat;  
+}
+
 /*charcontainer*/
 
 .charcontainer {
