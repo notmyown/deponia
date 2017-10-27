@@ -76,7 +76,12 @@ function DeponiaExport(data) {
         out += " </div>";
         out += "</div>";
         out += "</div></div></div>";
+        out += "<table width=100%><tr><td colspan=2><div class='button print'>Drucken</div></td></tr></table>";
         $(".main .maincontent").html(out);
+        $(".main .maincontent .print").click(function() {
+          $("body").addClass("print");
+          window.print();
+        });
         return out;
       }
     },
