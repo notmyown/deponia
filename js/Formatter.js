@@ -5,6 +5,7 @@ function Formatter(input) {
   this.dynamics = [];
 
   this.grep = function(table, value) {
+    try {
     var obj = $.grep(table, function(e) {
       return e.id == value;
     })[0];
@@ -15,12 +16,17 @@ function Formatter(input) {
       tmp.dynamic = name;
       this.dynamics.push(tmp);
     }
+    } catch(e) {
+      return {};
+    }
     return tmp;
   }
   this.row = {
     row : function(table, attribute, caption, water) {
       var out = "";
-      out += "<tr class='label'><td>" + caption + "</td></tr>";
+      if (caption) {
+        out += "<tr class='label'><td>" + caption + "</td></tr>";
+      }
       var val = {};
       if (table) { 
         val = that.grep(table.options, obj[attribute][0]);
@@ -56,17 +62,29 @@ function Formatter(input) {
               + "</td></tr>";
           out += "</table>";
           out += "</td></tr>";
-        } else if (obj[attribute].length == 3) { //item
-          out += "<tr class='value'><td>" + val.name + "</td></tr>";
-          out += "<tr class='value'><td>";
-          out += "<table>";
-          out += "<tr class='label sub'><td colspan=2>Gegenstand:</td></tr>";
-          val = that.grep(dat.t10.options, obj[attribute][1]).name;
-          val += " " + that.grep(dat.t11.options, obj[attribute][2]).name;
+        } else if (obj[attribute].length == 3 && attribute == "name") { // hotel/shop name
+          val = that.grep(table.t1.options, obj[attribute][0]).name;
+          val += " " +  that.grep(table.t2.options, obj[attribute][1]).name;
+          val += " " + that.grep(table.t3.options, obj[attribute][2]).name;
           val = val.replace(/\./g, "");
-          out += "<tr class='value sub'><td>" + val + "</td></tr>";
-          out += "</table></td></tr>";
-       } else if (obj[attribute].length == 8) { // Weiterer NSC
+          if (val) {
+            out += "<tr class='value'><td>" + val + "</td></tr>";
+          }
+       } else if (obj[attribute].length == 3) { // item
+         if (val.name) {
+           out += "<tr class='value'><td>" + val.name + "</td></tr>";
+         }
+         out += "<tr class='value'><td>";
+         out += "<table>";
+         if (val.name) {
+           out += "<tr class='label sub'><td colspan=2>Gegenstand:</td></tr>";
+         }
+         val = that.grep(dat.t10.options, obj[attribute][1]).name;
+         val += " " + that.grep(dat.t11.options, obj[attribute][2]).name;
+         val = val.replace(/\./g, "");
+         out += "<tr class='value sub'><td>" + val + "</td></tr>";
+         out += "</table></td></tr>";
+      } else if (obj[attribute].length == 8) { // Weiterer NSC
          out += "<tr class='value'><td>" + val.name + "</td></tr>";
          out += "<tr class='value'><td>";
          out += "<table>";
@@ -178,6 +196,79 @@ function Formatter(input) {
       return out;
     }
   }
+  this.nsc = {
+    table : function() {
+      var dat = data.adventures.tables;
+      var out = "<table>";
+      // Titel
+      out += "<tr class='title'><th>Nicht spielbarer Charakter</th></tr>";
+    //Der Auftaggeber
+      out += that.row.row(null, "auftraggeber", null);
+      out += "</table>";
+      return out;
+    },
+  };
+  this.group = {
+      table : function() {
+        var dat = data.adventures.tables;
+        var out = "<table>";
+        // Titel
+        out += "<tr class='title'><th>Gruppierung</th></tr>";
+      //Der Auftaggeber
+        out += that.row.row(null, "gegenspieler", null);
+        out += "</table>";
+        return out;
+      },
+    };
+  this.hotel = {
+      table : function() {
+        var dat = data.hotels.tables;
+        var out = "<table>";
+        // Titel
+        out += "<tr class='title'><th>Hotel</th></tr>";
+        // Das Hotel heisst
+        out += that.row.row(data.hotels.tables, "name", "Das Hotel heisst...");
+        out += that.row.row(data.hotels.tables.t4, "liegt", data.hotels.tables.t4.name);
+        out += that.row.row(data.hotels.tables.t5, "team", data.hotels.tables.t5.name);
+        out += that.row.row(data.hotels.tables.t6, "zimmer", data.hotels.tables.t6.name);
+        out += that.row.row(data.hotels.tables.t7, "fruhstuck", data.hotels.tables.t7.name);
+        out += that.row.row(data.hotels.tables.t8, "betten", data.hotels.tables.t8.name);
+        out += that.row.row(data.hotels.tables.t9, "ausgecheckt", data.hotels.tables.t9.name);
+        out += that.row.row(data.hotels.tables.t10, "sanitar", data.hotels.tables.t10.name);
+        out += that.row.row(data.hotels.tables.t11, "bezahlt", data.hotels.tables.t11.name);
+        out += that.row.row(data.hotels.tables.t12, "besonders", data.hotels.tables.t12.name);
+        out += "</table>";
+        return out;
+      },
+    };
+  this.shop = {
+      table : function() {
+        var dat = data.hotels.tables;
+        var out = "<table>";
+        // Titel
+        out += "<tr class='title'><th>Shop</th></tr>";
+        // Das Hotel heisst
+        out += that.row.row(data.shops.tables, "name", "Der Shop heisst...");
+        out += that.row.row(data.shops.tables.t4, "steht", data.shops.tables.t4.name);
+        out += that.row.row(data.shops.tables.t5, "theke", data.shops.tables.t5.name);
+        out += that.row.row(data.shops.tables.t6, "waren", data.shops.tables.t6.name);
+        out += that.row.row(data.shops.tables.t7, "bezahlt", data.shops.tables.t7.name);
+        out += "</table>";
+        return out;
+      },
+    };
+  this.item = {
+      table : function() {
+        var dat = data.adventures.tables;
+        var out = "<table>";
+        // Titel
+        out += "<tr class='title'><th>Gegenstand</th></tr>";
+        //Der Auftaggeber
+        out += that.row.row(null, "auftraggebersollen", null);
+        out += "</table>";
+        return out;
+      },
+    };
   this.reise = {
     table : function() {
       var dat = data.adventures.tables;

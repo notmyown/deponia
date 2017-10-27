@@ -13,7 +13,19 @@ function DeponiaExport(data) {
       if (obj.img) {
         instance.func.chars.table(obj);
       } else {
-        instance.func.adventures.table(obj);
+        if ("nsc" == obj.type) {
+          instance.func.nsc.table(obj);
+        } else if ("group" == obj.type) {
+          instance.func.group.table(obj);
+        } else if ("hotel" == obj.type) {
+          instance.func.hotel.table(obj);
+        } else if ("shop" == obj.type) {
+          instance.func.shop.table(obj);
+        } else if ("item" == obj.type) {
+          instance.func.item.table(obj);
+        } else {
+          instance.func.adventures.table(obj);
+        }
       }
 
     },
@@ -84,6 +96,170 @@ function DeponiaExport(data) {
         });
         return out;
       }
+    },
+    nsc : {
+      table : function(obj) {
+        var nsc = new Formatter(obj);
+        var out = nsc["nsc"].table();
+        var dynamics = nsc.dynamics;
+        if (dynamics.length > 0) {
+          var tmp = "<table>";
+          tmp += "<tr><th class='label'>Der NSC enth&auml;lt dynamische Werte.</br> Bitte trage zuerst die Werte ein um die &Uuml;bersicht zu generieren!</th></tr>";
+          $(dynamics).each(function() {
+            tmp += "<tr><td  class='label'>" + this.dynamic + "</td></tr><tr><td><input id='" + this.name.replace(/%/g,"") + "'/>";
+            if (this.func) {
+              if (this.func.indexOf("w6") > -1) {
+                tmp += "<div class='in in_w6'></div>";
+              }
+              if (this.func.indexOf("month") > -1) {
+                tmp += "<div class='in in_month'></div>";
+              }
+              if (this.func.indexOf("revert") > -1) {
+                tmp += "<div class='in in_revert'></div>";
+              }
+            }
+            tmp += "</td></tr>";
+          });
+          tmp += "<tr><td colspan=2><div class='button okdynamics'>OK</div></td></tr>";
+          tmp += "</table>";
+          $(".main .maincontent").html(tmp);
+          $(".main .in_month").click(function() {
+            var arr = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"];
+            var d = new Date();
+            $(this).prevAll("INPUT").val(arr[d.getMonth()]);
+          });
+          $(".main .in_w6").click(function() {
+            var rand = Math.floor(Math.random() * (6));
+            var arr = ["Eins", "Zwei", "Drei", "Vier", "Fünf", "Sechs"];
+            $(this).prevAll("INPUT").val(arr[rand]);
+          });
+          $(".main .in_revert").click(function() {
+            var val = $(this).prevAll("INPUT").val();
+            val = val.split("").reverse().join("").toLowerCase();
+            if (val[0]) {
+              val = val[0].toUpperCase() + val.substr(1, val.length);
+            }
+            $(this).prevAll("INPUT").val(val);
+          });
+          $(".main .okdynamics").click(function() {
+            $(dynamics).each(function() {
+              var val = $(".main #" + this.name.replace(/%/g,"")).val();
+              if (!val || val.length == 0) {
+                val = "Droggelbecher";
+              }
+              out = out.replace(this.name, val);
+            });
+            out += "<table width=100%><tr><td colspan=2><div class='button print'>Drucken</div></td></tr></table>";
+            $(".main .maincontent").html(out);
+            $(".main .maincontent .print").click(function() {
+              $("body").addClass("print");
+              window.print();
+            });
+          });
+        } else {
+          $(".main .maincontent").html(out);
+        }
+      },
+    },
+    group : {
+      table : function(obj) {
+        var nsc = new Formatter(obj);
+        var out = nsc["group"].table();
+        var dynamics = nsc.dynamics;
+        if (dynamics.length > 0) {
+          var tmp = "<table>";
+          tmp += "<tr><th class='label'>Die Gruppierung enth&auml;lt dynamische Werte.</br> Bitte trage zuerst die Werte ein um die &Uuml;bersicht zu generieren!</th></tr>";
+          $(dynamics).each(function() {
+            tmp += "<tr><td  class='label'>" + this.dynamic + "</td></tr><tr><td><input id='" + this.name.replace(/%/g,"") + "'/>";
+            if (this.func) {
+              if (this.func.indexOf("w6") > -1) {
+                tmp += "<div class='in in_w6'></div>";
+              }
+              if (this.func.indexOf("month") > -1) {
+                tmp += "<div class='in in_month'></div>";
+              }
+              if (this.func.indexOf("revert") > -1) {
+                tmp += "<div class='in in_revert'></div>";
+              }
+            }
+            tmp += "</td></tr>";
+          });
+          tmp += "<tr><td colspan=2><div class='button okdynamics'>OK</div></td></tr>";
+          tmp += "</table>";
+          $(".main .maincontent").html(tmp);
+          $(".main .in_month").click(function() {
+            var arr = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"];
+            var d = new Date();
+            $(this).prevAll("INPUT").val(arr[d.getMonth()]);
+          });
+          $(".main .in_w6").click(function() {
+            var rand = Math.floor(Math.random() * (6));
+            var arr = ["Eins", "Zwei", "Drei", "Vier", "Fünf", "Sechs"];
+            $(this).prevAll("INPUT").val(arr[rand]);
+          });
+          $(".main .in_revert").click(function() {
+            var val = $(this).prevAll("INPUT").val();
+            val = val.split("").reverse().join("").toLowerCase();
+            if (val[0]) {
+              val = val[0].toUpperCase() + val.substr(1, val.length);
+            }
+            $(this).prevAll("INPUT").val(val);
+          });
+          $(".main .okdynamics").click(function() {
+            $(dynamics).each(function() {
+              var val = $(".main #" + this.name.replace(/%/g,"")).val();
+              if (!val || val.length == 0) {
+                val = "Droggelbecher";
+              }
+              out = out.replace(this.name, val);
+            });
+            out += "<table width=100%><tr><td colspan=2><div class='button print'>Drucken</div></td></tr></table>";
+            $(".main .maincontent").html(out);
+            $(".main .maincontent .print").click(function() {
+              $("body").addClass("print");
+              window.print();
+            });
+          });
+        } else {
+          $(".main .maincontent").html(out);
+        }
+      },
+    },
+    item : {
+      table : function(obj) {
+        var item = new Formatter(obj);
+        var out = item["item"].table();
+        out += "<table width=100%><tr><td colspan=2><div class='button print'>Drucken</div></td></tr></table>";
+        $(".main .maincontent").html(out);
+        $(".main .maincontent .print").click(function() {
+          $("body").addClass("print");
+          window.print();
+        });
+      },
+    },
+    hotel : {
+      table : function(obj) {
+        var hotel = new Formatter(obj);
+        var out = hotel["hotel"].table();
+        out += "<table width=100%><tr><td colspan=2><div class='button print'>Drucken</div></td></tr></table>";
+        $(".main .maincontent").html(out);
+        $(".main .maincontent .print").click(function() {
+          $("body").addClass("print");
+          window.print();
+        });
+      },
+    },
+    shop : {
+      table : function(obj) {
+        var shop = new Formatter(obj);
+        var out = shop["shop"].table();
+        out += "<table width=100%><tr><td colspan=2><div class='button print'>Drucken</div></td></tr></table>";
+        $(".main .maincontent").html(out);
+        $(".main .maincontent .print").click(function() {
+          $("body").addClass("print");
+          window.print();
+        });
+      },
     },
     adventures : {
       table : function(obj) {

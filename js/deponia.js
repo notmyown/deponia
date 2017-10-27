@@ -118,7 +118,80 @@ function Deponia(data) {
     },
     export : function(type) {
       var obj = null;
-      if ("char" == type) {
+      if ("nsc" == type) {
+        var obj = new Abenteuer();
+        obj.func.type = type;
+        //Auftraggeber
+        $(".main .maincontent .adventure_row_nsc SELECT").each(function(id) {
+          obj.func.auftraggeber[id] = $(this).val();
+        });
+      } else if ("group" == type) {
+        var obj = new Abenteuer();
+        obj.func.type = type;
+        $(".main .maincontent .adventure_row_nsc_group SELECT").each(function(id) {
+          obj.func.gegenspieler[id] = $(this).val();
+        });
+        $(".main .maincontent .adventure_row_nsc_boss SELECT").each(function(id) {
+          obj.func.gegenspieler[obj.func.gegenspieler.length] = $(this).val();
+        });
+      } else if ("item" == type) {
+        var obj = new Abenteuer();
+        obj.func.type = type;
+        obj.func.auftraggebersollen[0] = 0;
+        $(".main .maincontent .adventure_row_nsc_item SELECT").each(function(id) {
+          obj.func.auftraggebersollen[id+1] = $(this).val();
+        });
+      } else if ("hotel" == type) {
+        var obj = new Hotel();
+        $(".main .maincontent .adventure_hotel_name SELECT").each(function(id) {
+          obj.func.name[id] = $(this).val();
+        });
+        $(".main .maincontent #places_row_hotel_t4 SELECT").each(function(id) {
+          obj.func.liegt[id] = $(this).val();
+        });
+        $(".main .maincontent #places_row_hotel_t5 SELECT").each(function(id) {
+          obj.func.team[id] = $(this).val();
+        });
+        $(".main .maincontent #places_row_hotel_t6 SELECT").each(function(id) {
+          obj.func.zimmer[id] = $(this).val();
+        });
+        $(".main .maincontent #places_row_hotel_t7 SELECT").each(function(id) {
+          obj.func.fruhstuck[id] = $(this).val();
+        });
+        $(".main .maincontent #places_row_hotel_t8 SELECT").each(function(id) {
+          obj.func.betten[id] = $(this).val();
+        });
+        $(".main .maincontent #places_row_hotel_t9 SELECT").each(function(id) {
+          obj.func.ausgecheckt[id] = $(this).val();
+        });
+        $(".main .maincontent #places_row_hotel_t9 SELECT").each(function(id) {
+          obj.func.sanitar[id] = $(this).val();
+        });
+        $(".main .maincontent #places_row_hotel_t10 SELECT").each(function(id) {
+          obj.func.bezahlt[id] = $(this).val();
+        });
+        $(".main .maincontent #places_row_hotel_t11 SELECT").each(function(id) {
+          obj.func.besonders[id] = $(this).val();
+        });
+        
+      } else if ("shop" == type) {
+        var obj = new Shop();
+        $(".main .maincontent .adventure_shop_name SELECT").each(function(id) {
+          obj.func.name[id] = $(this).val();
+        });
+        $(".main .maincontent #places_row_shop_t4 SELECT").each(function(id) {
+          obj.func.steht[id] = $(this).val();
+        });
+        $(".main .maincontent #places_row_shop_t5 SELECT").each(function(id) {
+          obj.func.theke[id] = $(this).val();
+        });
+        $(".main .maincontent #places_row_shop_t6 SELECT").each(function(id) {
+          obj.func.waren[id] = $(this).val();
+        });
+        $(".main .maincontent #places_row_shop_t7 SELECT").each(function(id) {
+          obj.func.bezahlt[id] = $(this).val();
+        });
+      } else if ("char" == type) {
         obj = new Char();
         obj.func.name = encodeURIComponent($(".main .maincontent .charcontainer .charimage .input").val());
         obj.func.beschreibung = encodeURIComponent($(".main .maincontent .charcontainer .charvalues .description").val());
@@ -199,9 +272,11 @@ function Deponia(data) {
         $(".main .maincontent .adventure_row_ortlichkeit_sub SELECT").each(function(id) {
           obj.func.ortlichkeit[id+1] = $(this).val();
         });
+        if ($(".main .maincontent .adventure_row_ortlichkeit_sub SELECT").length > 0) {
         //Auffüllen mit 0 damit der Export funktioniert und unterscheiden kann dass es ein shop ist
-        while(obj.func.ortlichkeit.length < 11) {
-          obj.func.ortlichkeit[obj.func.ortlichkeit.length] = 0;
+          while(obj.func.ortlichkeit.length < 11) {
+            obj.func.ortlichkeit[obj.func.ortlichkeit.length] = 0;
+          }
         }
         
         //an diesem ort
@@ -365,6 +440,7 @@ function Deponia(data) {
         out += "<div class='tr adventure_row_all'><div class='td random perc100' align='center'><div class='button submitall'>Zuf&auml;llig</div></div></div>";
         out += instance.func.adventure.renderItemTable("adventure_row_nsc_item", "Zuf&auml;lliger Gegenstand");
       }
+      out += "<div class='tr adventure_row_export'><div class='td random' colspan='2' align='center'><div class='button export'>Exportieren</div></div></div>";
       out += "</div>"
       $(".main .maincontent").html(out);
       
@@ -374,6 +450,11 @@ function Deponia(data) {
       $(".main .maincontent .table .button.submitall").click(function() {
         $(".main .maincontent .table .button.submit").click();
       });
+      
+      $(".main .maincontent .table .button.export").click(function() {
+        instance.func.event.export(intype);
+      });
+      
     }
   },
   places : {
@@ -388,6 +469,7 @@ function Deponia(data) {
         out += "<div class='tr adventure_row_all'><div class='td random perc100' align='center'><div class='button submitall'>Zuf&auml;llig</div></div></div>";
         out += instance.func.places.renderShopTable("places_row_shop");
       }
+      out += "<div class='tr adventure_row_export'><div class='td random' colspan='2' align='center'><div class='button export'>Exportieren</div></div></div>";
       out += "</div>"
       $(".main .maincontent").html(out);
       
@@ -397,11 +479,15 @@ function Deponia(data) {
       $(".main .maincontent .table .button.submitall").click(function() {
         $(".main .maincontent .table .button.submit").click();
       });
+      
+      $(".main .maincontent .table .button.export").click(function() {
+        instance.func.event.export(intype);
+      });
     },
     renderShopTable : function(id, aslabel) {
       var out = "";
       out += "<div class='tr " + id + " " + aslabel + "'><div class='td label perc100'>" + data.shops.tables.t1.name + "</div></div>";
-      out += "<div class='tr " + id + " " + aslabel + "'>";
+      out += "<div class='tr " + id + " " + aslabel + " adventure_shop_name'>";
       out += " <div class='td select'>";
       out += " <div class='sel' style='width:35%'><select id='adventure_step_2'>";
       $(data.shops.tables.t1.options).each(function() {
@@ -425,7 +511,7 @@ function Deponia(data) {
       for (var i = 4; i < 8; i++) {
         var tab = data.shops.tables["t" + i];
         out += "<div class='tr " + id + " " + aslabel + "'><div class='td label perc100'>" + tab.name + "</div></div>";
-        out += "<div class='tr " + id +" " + aslabel + "' id='" + id + "_t4'>";
+        out += "<div class='tr " + id +" " + aslabel + "' id='" + id + "_t" + i + "'>";
         out += " <div class='td select'><div class='sel'><select class='adventure_step_1'>";
         $(tab.options).each(function() {
           out += "<option value='" + this.id + "'>" + this.name + "</option>";
@@ -440,7 +526,7 @@ function Deponia(data) {
     renderHotelTable : function(id, aslabel) {
       var out = "";
       out += "<div class='tr " + id + " " + aslabel + "'><div class='td label perc100'>" + data.hotels.tables.t1.name + "</div></div>";
-      out += "<div class='tr " + id + " " + aslabel + "'>";
+      out += "<div class='tr " + id + " " + aslabel + " adventure_hotel_name'>";
       out += " <div class='td select'>";
       out += " <div class='sel' style='width:35%'><select id='adventure_step_2'>";
       $(data.hotels.tables.t1.options).each(function() {
@@ -463,7 +549,7 @@ function Deponia(data) {
       for (var i = 4; i < 13; i++) {
         var tab = data.hotels.tables["t" + i];
         out += "<div class='tr " + id + " " + aslabel + "'><div class='td label' colspan=2>" + tab.name + "</div></div>";
-        out += "<div class='tr " + id +" " + aslabel + "' id='" + id + "_t4'>";
+        out += "<div class='tr " + id +" " + aslabel + "' id='" + id + "_t" + i + "'>";
         out += " <div class='td select'><div class='sel'><select class='adventure_step_1'>";
         $(tab.options).each(function() {
           out += "<option value='" + this.id + "'>" + this.name + "</option>";
