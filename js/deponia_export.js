@@ -106,6 +106,7 @@ function DeponiaExport(data) {
             $(".main .maincontent").html(out);
             $(".main .maincontent .print").click(function() {
               $("body").addClass("print");
+              window.print();
             });
           });
         } else {
