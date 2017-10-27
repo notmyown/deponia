@@ -76,7 +76,7 @@ function DeponiaExport(data) {
         out += " </div>";
         out += "</div>";
         out += "</div></div></div>";
-        $(".main").html(out);
+        $(".main .maincontent").html(out);
         return out;
       }
     },
@@ -87,13 +87,13 @@ function DeponiaExport(data) {
         var dynamics = adventure.dynamics;
         if (dynamics.length > 0) {
           var tmp = "<table>";
-          tmp += "<tr><th colspan=2>Das Abenteuer enth&auml;lt dynamische Werte.</br> Bitte trage zuerst die Werte ein um die &Uuml;bersicht zu generieren!</th></tr>";
+          tmp += "<tr><th class='label'>Das Abenteuer enth&auml;lt dynamische Werte.</br> Bitte trage zuerst die Werte ein um die &Uuml;bersicht zu generieren!</th></tr>";
           $(dynamics).each(function() {
-            tmp += "<tr><td>" + this.dynamic + "</td><td><input id='" + this.name.replace(/%/g,"") + "'/></td></tr>";
+            tmp += "<tr><td  class='label'>" + this.dynamic + "</td></tr><tr><td><input id='" + this.name.replace(/%/g,"") + "'/></td></tr>";
           });
-          tmp += "<tr><td colspan=2><div class='okdynamics'>OK</div></td></tr>";
+          tmp += "<tr><td colspan=2><div class='button okdynamics'>OK</div></td></tr>";
           tmp += "</table>";
-          $(".main").html(tmp);
+          $(".main .maincontent").html(tmp);
           $(".main .okdynamics").click(function() {
             $(dynamics).each(function() {
               var val = $(".main #" + this.name.replace(/%/g,"")).val();
@@ -102,10 +102,14 @@ function DeponiaExport(data) {
               }
               out = out.replace(this.name, val);
             });
-            $(".main").html(out);
+            out += "<table width=100%><tr><td colspan=2><div class='button print'>Drucken</div></td></tr></table>";
+            $(".main .maincontent").html(out);
+            $(".main .maincontent .print").click(function() {
+              $("body").addClass("print");
+            });
           });
         } else {
-          $(".main").html(out);
+          $(".main .maincontent").html(out);
         }
       }
     }
