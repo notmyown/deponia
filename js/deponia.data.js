@@ -3095,7 +3095,7 @@ data = {
 				],
 			},
 			t20 : {
-				name : "Abschliessend sollen die Spieler...",
+				name : "Abschlie&szlig;end sollen die Spieler...",
 				dice : "1W4",
 				options : [
 					{
@@ -3309,7 +3309,7 @@ data = {
 				],
 			},
 			t26 : {
-				name : "Abschliessend sollen die Spieler...",
+				name : "Abschlie&szlig;end sollen die Spieler...",
 				dice : "1W4",
 				options : [
 					{
@@ -3599,7 +3599,7 @@ data = {
 				]
 			},
 			t32 : {
-				name : "Abschliessend sollen die Spieler...",
+				name : "Abschlie&szlig;end sollen die Spieler...",
 				dice : "1W4",
 				options : [
 					{
@@ -3832,7 +3832,7 @@ data = {
 				],
 			},
 			t38 : {
-				name : "Abschliessend sollen die Spieler...",
+				name : "Abschlie&szlig;end sollen die Spieler...",
 				dice : "1W4",
 				options : [
 					{

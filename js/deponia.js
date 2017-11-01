@@ -313,7 +313,8 @@ function Deponia(data) {
   home : {
     content : function() {
       var out = "<div class='table'>";
-      out += "<div class='tr'><div class='th perc100'>Das Rollenspiel</div></div>";
+      out += "<div class='tr'><div class='th perc100'><span class='border'>Das Rollenspiel</span><span class='text'>Das Rollenspiel</span></div></div>";
+      //out += "<div class='tr'><div class='th perc100'>abcdefghijklmnopqrstuvwxyz</div></div>";
       out += "<div class='tr'><div class='td'>";
       out += " <div class='book'><img src='./img/book.png'></div>";
       out += "</div></div>";
@@ -324,7 +325,7 @@ function Deponia(data) {
   char : {
     content : function() {
       var out = "<div class='table'>";
-      out += "<div class='tr'><div class='th perc100'>Charakter -Generator</div></div>";
+      out += "<div class='tr'><div class='th perc100'><span class='border'>Charakter-Generator</span><span class='text'>Charakter-Generator</span></div></div>";
       out += "<div class='tr'><div class='td'>";
       out += instance.func.char.select();
       out += "</div></div>";
@@ -425,18 +426,18 @@ function Deponia(data) {
     content : function(intype) {
       var out = "<div class='table'>";
       if (intype == "nsc") {
-        out += "<div class='tr'><div class='th perc100'>NSC -Generator</div></div>";
+        out += "<div class='tr'><div class='th perc100'><span class='border'>NSC-Generator</span><span class='text'>NSC-Generator</span></div></div>";
         out += "<div class='tr adventure_row_all'><div class='td random perc100' align='center'><div class='button submitall'>Zuf&auml;llig</div></div></div>";
         out += instance.func.adventure.renderNSCTable("adventure_row_nsc", "Nicht Spielbarer Charakter");
       } else if(intype == "group"){
-        out += "<div class='tr'><div class='th' colspan=2>Gruppen -Generator</div></div>";
+        out += "<div class='tr'><div class='th perc100'><span class='border'>Gruppen-Generator</span><span class='text'>Gruppen-Generator</span></div></div>";
         out += "<div class='tr adventure_row_all'><div class='td random perc100' align='center'><div class='button submitall'>Zuf&auml;llig</div></div></div>";
         out += "<div class='tr'><div class='td label perc100'>Gruppierung</div></div>";
         out += instance.func.adventure.renderNSCGroupTable("adventure_row_nsc_group");
         out += "<div class='tr'><div class='td caption perc100'>Deren Boss:</div></div>";
         out += instance.func.adventure.renderNSCTable("adventure_row_nsc_boss");
       } else if(intype == "item"){
-        out += "<div class='tr'><div class='th perc100'>Gegenstands -Generator</div></div>";
+        out += "<div class='tr'><div class='th perc100'><span class='border'>Gegenstands-Generator</span><span class='text'>Gegenstands-Generator</span></div></div>";
         out += "<div class='tr adventure_row_all'><div class='td random perc100' align='center'><div class='button submitall'>Zuf&auml;llig</div></div></div>";
         out += instance.func.adventure.renderItemTable("adventure_row_nsc_item", "Zuf&auml;lliger Gegenstand");
       }
@@ -461,11 +462,11 @@ function Deponia(data) {
     content : function(intype) {
       var out = "<div class='table'>";
       if (intype == "hotel") {
-        out += "<div class='tr'><div class='th perc100'>Hotel -Generator</div></div>";
+        out += "<div class='tr'><div class='th perc100'><span class='border'>Hotel-Generator</span><span class='text'>Hotel-Generator</span></div></div>";
         out += "<div class='tr adventure_row_all'><div class='td random perc100' align='center'><div class='button submitall'>Zuf&auml;llig</div></div></div>";
         out += instance.func.places.renderHotelTable("places_row_hotel");
       } else if (intype == "shop"){
-        out += "<div class='tr'><div class='th perc100'>Shop -Generator</div></div>";
+        out += "<div class='tr'><div class='th perc100'><span class='border'>Shop-Generator</span><span class='text'>Shop-Generator</span></div></div>";
         out += "<div class='tr adventure_row_all'><div class='td random perc100' align='center'><div class='button submitall'>Zuf&auml;llig</div></div></div>";
         out += instance.func.places.renderShopTable("places_row_shop");
       }
@@ -569,7 +570,7 @@ function Deponia(data) {
       var type = parseInt(intype);
       var adv = data.adventures.types[parseInt(type)];
       var out = "<div class='table'>";
-      out += "<div class='tr'><div class='th perc100'>" + adv.name + "</div></div>";
+      out += "<div class='tr'><div class='th perc100'><span class='border'>" + adv.name + "</span><span class='text'>" + adv.name + "</span></div></div>";
       out += "<div class='tr adventure_row_all'><div class='td random' colspan='2' align='center'><div class='button submitall'>Zuf&auml;llig</div></div></div>";
       
       if ([0,1,2,3].indexOf(type) > -1) {

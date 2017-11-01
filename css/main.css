@@ -1,6 +1,29 @@
 @import url("screen.css") only screen;
 
 .content .main .maincontent .table .th {
-  font-family: 'KOMIKAX';
+  font-family: 'DEPONIA';
   color: #a84a16;
+  text-transform: uppercase;
+  height: 2.5em;
 }
+
+.content .main .maincontent .table .th span.text {
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: absolute;
+  background-image: radial-gradient(farthest-corner at 50% 10px, #cb631c 0, #682218 35%, #551919 50%);
+  width: 100%;
+  left: 0;
+}
+
+.content .main .maincontent .table .th span.border{
+    text-shadow:
+    -1px -1px 0px #FFF,
+    1px -1px 0px #FFF,
+    -1px 1px 0px #FFF,
+    1px 1px 0px #FFF;
+    position: absolute;
+    width: 100%;
+    left: 0;
+}
+

@@ -3,13 +3,9 @@
 
 @font-face {
 	font-family: 'KOMIKAX';
-	src: url('font/komikax-webfont.eot');
-	src: url('font/komikax-webfont.eot#iefix') format('embedded-opentype'), 
-    url('font/KomikaAxis.svg#komika_axisregular') format('svg'), 
-    url('font/komikax-webfont.woff') format('woff'), 
-	url('font/komikax-webfont.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
+	src: url('font/KomikaxSZLIG.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }
 
 body {
