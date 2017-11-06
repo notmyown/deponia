@@ -54,6 +54,30 @@ function Deponia(data) {
     
     $("#menu-item-home a").click();
     
+    var adv = instance.func.param("adv");
+    if (adv) {
+    $("#menu-item-textadventure .sub-menu a").click(function() {
+      var id = $(this).parent().attr('id').split("_").pop();
+      instance.func.textadventure.content(id);
+      $(".main .maincontent .table .button.submitall").click();
+    });
+    } else {
+      $("#menu-item-textadventure").remove();
+    }
+    
+  },
+  param : function getUrlParameter(prop) {
+    var params = {};
+    var search = decodeURIComponent(window.location.href
+        .slice(window.location.href.indexOf('?') + 1));
+    var definitions = search.split('&');
+
+    definitions.forEach(function(val, key) {
+      var parts = val.split('=', 2);
+      params[parts[0]] = parts[1];
+    });
+
+    return (prop && prop in params) ? params[prop] : null;
   },
   random : {
     num : function(size) {
@@ -320,6 +344,13 @@ function Deponia(data) {
       out += "</div></div>";
       out += "</div>"
       $(".main .maincontent").html(out);
+    },
+  },
+  textadventure : {
+    content : function(intype) {
+      window.open("./adventure/" + intype + "/index.html", "ta");
+      //var out = "<iframe src='./adventure/" + intype + "/index.html' width=100% height=345 scrolling=no/>"
+      //$(".main .maincontent").html(out);
     },
   },
   char : {

@@ -1,0 +1,204 @@
+/* Override Defaults */
+#ui-bar { 
+	display: none;
+}
+
+.debug #ui-bar { 
+  display: block;
+}
+
+#story {
+	margin: 0 !important;
+}
+
+#passages {
+	max-width: 100%;
+}
+
+html, body {
+	height: 100%;
+	font-size: 16px;
+}
+
+@font-face {
+	font-family: 'KOMIKAX';
+	src: url('./font/KomikaxSZLIG.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+#story, #story DIV {
+	padding: 0;
+	/*height:auto !important; /* normale Browser */
+	height: 100%; /* IE6: setzt dies wie min-height um*/
+	background-size: 100% auto;
+	background-repeat: no-repeat;
+}
+
+DIV.section.tutorial {
+	background-image: url(../img/backgrounds/tutorial.png);
+}
+
+DIV.section .overlay {
+	position: absolute;
+	top: 0;
+	width: 100%;
+}
+
+DIV.section.tutorial .presse {
+	background-image: url(../img/overlay/press.png);
+}
+
+DIV.section.tutorial .title {
+	background-image: url(../img/overlay/title.png);
+}
+
+DIV.section.tutorial .mullantrop {
+	background-image: url(../img/overlay/mullantrop.png);
+}
+
+DIV.section.tutorial .orni {
+	background-image: url(../img/overlay/orni.png);
+}
+
+DIV.section.tutorial .ende {
+  background-image: url(../img/overlay/endetut.png);
+}
+
+DIV.section .inventar {
+	background-image: url(../img/overlay/inventar.png);
+	z-index: 9999;
+}
+
+DIV.section .inventar.closed {
+	background-image: none !important;
+	width: 120px;
+	position: absolute;
+	right: 0;
+	height: 120px !important;
+}
+
+DIV.section .inventar.closed .invcontent, DIV.section .inventar .invcontent SPAN  {
+  display: none;
+}
+DIV.section .inventar .invcontent {
+position: absolute;
+right: 12%;
+width: 38%;
+top: 6%;
+min-height: auto !important;
+height: auto !important;
+}
+
+DIV.section .inventar .invcontent .invitem {
+	background-size: 100% auto;
+  background-repeat: no-repeat;
+  height: 20% !important;
+  min-height: 2% !important;
+  width: 15%;
+  position: relative;
+  left: 2%;
+  top: 1%;
+  float: left;
+  padding-top: 12% !important;
+  margin-top: 2%;
+  margin-right: 5%;
+  margin-bottom: 2%;
+}
+
+DIV.section .inventar .menuitem {
+	position: absolute;
+	background: none;
+	right: 50%;
+	top: 0;
+	width: 118px;
+	height: 101px !important;
+	cursor: pointer;
+}
+
+DIV.section .inventar.closed .menuitem {
+	background-image: url(../img/overlay/menuicon.png);
+	right: 0;
+	top: 0;
+	width: 118px;
+	height: 101px !important;
+	cursor: pointer;
+}
+
+DIV.section .caption {
+	text-align: center;
+	font-family: 'KOMIKAX';
+	text-shadow: -1px -1px 0px #000, 1px -1px 0px #000, -1px 1px 0px #000,
+		1px 1px 0px #000;
+	/*font-size: 10px;*/
+	margin: 0 2.5em !important;
+	position: relative;
+}
+
+/* char colors */
+.off {
+	color: #c89f2c;
+}
+
+.chor {
+	color: #2c9cc8;
+}
+
+.item, DIV.section .options .item A {
+	color: #f543e0;
+}
+
+/* Options */
+DIV.section .options {
+	background-image: url(../img/dialogbox/top.png);
+	background-repeat: repeat-x !important;
+	background-color: rgba(13, 53, 41, 0.79);
+	background-size: auto !important;
+	position: fixed;
+	padding: 0;
+	width: 80%;
+	bottom: 0;
+	height: auto !important;
+	left: 10%;
+	/*font-size: 10px;*/
+	padding-top: 2em !important;
+}
+
+DIV.section .options BR {
+	display: none;
+}
+
+DIV.section .options::before, DIV.section .options::after {
+	content: " ";
+	width: 17px;
+	height: 100%;
+	position: absolute;
+	background-repeat: no-repeat;
+	top: 0;
+}
+
+DIV.section .options::before {
+	background-image: url(../img/dialogbox/left.png);
+	left: 0;
+}
+
+DIV.section .options::after {
+	background-image: url(../img/dialogbox/right.png);
+	right: 0;
+}
+
+DIV.section .options A, DIV.section .options A:visited {
+	padding: 0 0 1em 4em;
+	font-family: 'KOMIKAX';
+	color: #aeaeae;
+	text-shadow: 2px 2px #000;
+	display: block;
+}
+
+DIV.section .options A:hover {
+	color: white;
+}
+
+BR {
+	font-size: 0;
+}
