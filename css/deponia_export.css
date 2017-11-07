@@ -329,3 +329,87 @@ body.print .main .maincontent{
 body.print .before, body.print .after, body.print .main .maincontent .print {
 	display: none;
 }
+
+
+/* ItemCard Selector*/
+.itemcardimg {
+  width: 198px;
+  height: 283px;
+  background: url(../img/cards/background.png) 0 0 no-repeat;
+  overflow: hidden;
+  background-size: 100% auto;
+  position: relative;
+  margin: 0 auto;
+}
+
+.itemcardimg IMG {
+  width: 50%;
+  margin: auto;
+  bottom: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.itemcardimage .itemcardselector .left {
+    background: url(../img/char/css_arrow_left.png) 0 0 no-repeat;
+    width: 23px;
+    float: left;
+    height: 32px;
+    margin-left: 32px;
+    margin-top: 12px;
+    cursor: pointer;
+}
+
+.itemcardimage .itemcardselector  .right {
+    background: url(../img/char/css_arrow_right.png) 0 0 no-repeat;
+    width: 32px;
+    float: right;
+    height: 32px;
+    margin-right: 28px;
+    margin-top: 12px;
+    cursor: pointer;
+}
+
+.itemcardimage .itemcardselector  .center {
+    width: 48px;
+    float: left;
+    height: 42px;
+    margin-left: 43px;
+    margin-top: 2px;
+    font-size: 0.8em;
+    color: white;
+    white-space: nowrap;
+    cursor: pointer;
+    font-family: Arial, Helvetica, Arial, sans-serif;
+    font-size: 10px;
+}
+
+ .itemcardimage .itemcardselector  .center INPUT {
+  display: none;
+}
+
+ .itemcardimage .itemcardselector {
+    background: url(../img/char/nav.png) no-repeat transparent;
+    width: 260px;
+    height: 60px;
+    line-height: 55px;
+    margin: 0 auto;
+}
+
+.itemcardimage .itemcardselector  .right:hover, .itemcardimage .itemcardselector .left:hover{
+  background-position: 0px -32px;
+}
+.itemcardimage .itemcardselector  .center:hover{
+  background-position: 0px -48px;
+}
+
+.allcards {
+  width: 1000px;
+}
+
+.allcards .itemcardimage {
+  float: left;
+}
+

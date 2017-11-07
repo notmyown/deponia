@@ -9,25 +9,32 @@ function DeponiaExport(data) {
   this.func = {
     init : function() {
       var out = "";
-      var obj = JSON.parse(instance.func.param("export"));
-      if (obj.img) {
-        instance.func.chars.table(obj);
+      var obj = instance.func.param("export");
+      if (!obj) {
+        obj = window.location.href.split("display=")[1];
+        obj = decodeURIComponent(obj);
+        $(".main").addClass("allcards").html(obj);
+        $("body").addClass("print");
       } else {
-        if ("nsc" == obj.type) {
-          instance.func.nsc.table(obj);
-        } else if ("group" == obj.type) {
-          instance.func.group.table(obj);
-        } else if ("hotel" == obj.type) {
-          instance.func.hotel.table(obj);
-        } else if ("shop" == obj.type) {
-          instance.func.shop.table(obj);
-        } else if ("item" == obj.type) {
-          instance.func.item.table(obj);
+        obj = JSON.parse(obj);
+        if (obj.img) {
+          instance.func.chars.table(obj);
         } else {
-          instance.func.adventures.table(obj);
+          if ("nsc" == obj.type) {
+            instance.func.nsc.table(obj);
+          } else if ("group" == obj.type) {
+            instance.func.group.table(obj);
+          } else if ("hotel" == obj.type) {
+            instance.func.hotel.table(obj);
+          } else if ("shop" == obj.type) {
+            instance.func.shop.table(obj);
+          } else if ("item" == obj.type) {
+            instance.func.item.table(obj);
+          } else {
+            instance.func.adventures.table(obj);
+          }
         }
       }
-
     },
     param : function getUrlParameter(prop) {
       var params = {};
@@ -40,7 +47,7 @@ function DeponiaExport(data) {
         params[parts[0]] = parts[1];
       });
 
-      return (prop && prop in params) ? params[prop] : params;
+      return (prop && prop in params) ? params[prop] : null;
     },
     chars : {
       table : function(obj) {

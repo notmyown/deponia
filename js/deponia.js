@@ -2,11 +2,25 @@ function Deponia(data) {
   var instance = this;
   this.func = { 
   init : function() {
+    
+    
     var out = "";
+    
+   // Dropdown für NSC Generatoren
+    out += "<li id='menu-item-generator-item_card' class='menu-item item_generator'><a href='#'>Item-Karten</a>";
+    out += "<li id='menu-item-generator-item_item' class='menu-item item_generator'><a href='#'>Gegenstand</a>";
+    
+    $("#menu-item-generator-item .sub-sub-menu").html(out);
+    // Click Action setzen
+    $("#menu-item-generator-item .sub-sub-menu .item_generator a").click(function() {
+      var id = $(this).parent().attr('id').split("item_").pop();
+      instance.func.item.content(id);
+      $(".main .maincontent .table .button.submitall").click();
+    });
+    
     // Dropdown für NSC Generatoren
-    out += "<li id='menu-item-generator-nsc_nsc' class='menu-item nsc_generator'><a href='#'>NSC</a>";
+    out = "<li id='menu-item-generator-nsc_nsc' class='menu-item nsc_generator'><a href='#'>NSC</a>";
     out += "<li id='menu-item-generator-nsc_group' class='menu-item nsc_generator'><a href='#'>Gruppierung</a>";
-    out += "<li id='menu-item-generator-nsc_item' class='menu-item nsc_generator'><a href='#'>Gegenstand</a>";
     
     $("#menu-item-generator-nsc .sub-sub-menu").html(out);
     // Click Action setzen
@@ -235,7 +249,9 @@ function Deponia(data) {
         obj.func.erholungsrate = encodeURIComponent($(".main .maincontent .charcontainer .charvalues  .erholungsrate").val());
         obj.func.stress = $(".charcontainer .charvalues .stress .stressbar span.clicked").length;
         obj.func.img = encodeURIComponent($(".charimageimg img").attr("src"));
-      } else {
+      }  else if ("card" == type) {
+        obj = $(".allcards").html();
+      }  else {
         var obj = new Abenteuer();
         obj.func.type = type;
         
@@ -321,16 +337,27 @@ function Deponia(data) {
           obj.func.belohnung[id+1] = $(this).val();
         });
       }
-      
-      var enc = JSON.stringify(obj.func);
-      enc = encodeURIComponent(enc);
-      var win = window.open('./export.html?export=' + enc, '_blank');
-      if (win) {
-        //Browser has allowed it to be opened
-        win.focus();
+      if (obj.func) {
+        var enc = JSON.stringify(obj.func);
+        enc = encodeURIComponent(enc);
+        var win = window.open('./export.html?export=' + enc, '_blank');
+        if (win) {
+          //Browser has allowed it to be opened
+          win.focus();
+        } else {
+          //Browser has blocked it
+          alert('Please allow popups for this website');
+        }
       } else {
-        //Browser has blocked it
-        alert('Please allow popups for this website');
+        enc = encodeURIComponent(obj);
+        var win = window.open('./export.html?display=' + enc, '_blank');
+        if (win) {
+          //Browser has allowed it to be opened
+          win.focus();
+        } else {
+          //Browser has blocked it
+          alert('Please allow popups for this website');
+        }
       }
     }
   },
@@ -462,6 +489,92 @@ function Deponia(data) {
       return out;
     }
   },
+  item : {
+    content : function(intype) {
+      var out = "<div class='table'>";
+      if(intype == "item"){
+        out += "<div class='tr'><div class='th perc100'><span class='border'>Gegenstands-Generator</span><span class='text'>Gegenstands-Generator</span></div></div>";
+        out += "<div class='tr adventure_row_all'><div class='td random perc100' align='center'><div class='button submitall'>Zuf&auml;llig</div></div></div>";
+        out += instance.func.adventure.renderItemTable("adventure_row_nsc_item", "Zuf&auml;lliger Gegenstand");
+      } else if(intype == "card") {
+        out += "<div class='tr'><div class='th perc100'><span class='border'>Item-Karten-Generator</span><span class='text'>Item-Karten-Generator</span></div></div>";
+        out += "<div class='tr'><div class='th perc100'>";
+        out += "  <div class='itemcardimage cardsel'>";
+        out += "    <div class='itemcardimg'>";
+        out += "      <img src='./img/cards/1.png' width=100%/>";
+        out += "    </div>";
+        out += "    <div class='itemcardselector'><div class='arrow left'></div><div class='center'><span>Aus Datei</span><input type='file'/></div><div class='arrow right'></div></div>";
+        out += "  </div>";
+        out += "</div></div>";
+        out += "<div class='tr'><div class='td' colspan='2' align='center'><div class='button add'>Hinzuf&uuml;gen</div></div></div>";
+        out += "<div class='tr'><div class='td' colspan='2' align='center'><div class='allcards'></div></div></div>";
+      }
+      out += "<div class='tr adventure_row_export'><div class='td random' colspan='2' align='center'><div class='button export'>Exportieren</div></div></div>";
+      out += "</div>"
+      $(".main .maincontent").html(out);
+      
+      $(".itemcardselector .arrow").click(function() {
+        var id = 0;
+        var step = 1;
+        var max = 15;
+        if ($(this).hasClass("right")) {
+          step = -1;
+        }
+        var old = $(".cardsel .itemcardimg img").attr("src");
+        if (old && old.indexOf("base64") == -1) {
+          var splits = old.split("/");
+          if (splits.length > 1) {
+            old = splits[splits.length -1];
+          }
+          old = old.split("\.")[0];
+          if (old) {
+            old = parseInt(old);
+            var newid = old + step; 
+            if (newid < 1) {
+              newid = max;
+            } 
+            if (newid > max) {
+              newid = 1;
+            }
+            $(".cardsel .itemcardimg img").attr("src", "./img/cards/" + newid + ".png");
+          }
+        } else {
+          $(".cardsel .itemcardimg img").attr("src", "./img/char/1.png");
+        } 
+      });
+      $(".itemcardselector .center span").click(function(e) {
+        e.preventDefault();
+        $(".itemcardselector .center INPUT").trigger('click');
+      });
+      $(".itemcardselector .center INPUT").change(function(e) {
+        $(".cardsel .itemcardimg img").attr("src", $(this).val());
+        var reader = new FileReader();
+        reader.onload = function(){
+          var output = document.getElementById('output');
+          $(".cardsel .itemcardimg img").attr("src", reader.result);
+        };
+        reader.readAsDataURL(e.target.files[0]);
+      });
+      
+      $(".main .maincontent .table .button.add").click(function() {
+        var current = "";
+        var out = "<div class='itemcardimage'><div class='itemcardimg'><img src='" + $(".itemcardimg IMG").attr("src") + "' width=100%/></div></div>";
+        $(".allcards").append(out);
+        $(".allcards .itemcardimage").unbind("click").click(function() {
+          $(this).remove();
+        });
+      });
+      
+      $(".allcards .itemcardimage").click(function() {
+        $(this).remove();
+      });
+      
+      $(".main .maincontent .table .button.export").click(function() {
+        instance.func.event.export(intype);
+      });
+      
+    }
+  },
   nsc : {
     content : function(intype) {
       var out = "<div class='table'>";
@@ -476,10 +589,6 @@ function Deponia(data) {
         out += instance.func.adventure.renderNSCGroupTable("adventure_row_nsc_group");
         out += "<div class='tr'><div class='td caption perc100'>Deren Boss:</div></div>";
         out += instance.func.adventure.renderNSCTable("adventure_row_nsc_boss");
-      } else if(intype == "item"){
-        out += "<div class='tr'><div class='th perc100'><span class='border'>Gegenstands-Generator</span><span class='text'>Gegenstands-Generator</span></div></div>";
-        out += "<div class='tr adventure_row_all'><div class='td random perc100' align='center'><div class='button submitall'>Zuf&auml;llig</div></div></div>";
-        out += instance.func.adventure.renderItemTable("adventure_row_nsc_item", "Zuf&auml;lliger Gegenstand");
       }
       out += "<div class='tr adventure_row_export'><div class='td random' colspan='2' align='center'><div class='button export'>Exportieren</div></div></div>";
       out += "</div>"
