@@ -340,7 +340,6 @@ function Deponia(data) {
       if (obj.func) {
         var enc = JSON.stringify(obj.func);
         enc = encodeURIComponent(enc);
-        enc = encodeURIComponent(enc);
         var win = window.open('./export.html?export=' + enc, '_blank');
         if (win) {
           //Browser has allowed it to be opened
@@ -351,6 +350,7 @@ function Deponia(data) {
         }
       } else {
         enc = encodeURIComponent(obj);
+        enc = encodeURIComponent(enc);
         var win = window.open('./export.html?display=' + enc, '_blank');
         if (win) {
           //Browser has allowed it to be opened
