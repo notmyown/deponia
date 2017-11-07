@@ -13,6 +13,7 @@ function DeponiaExport(data) {
       if (!obj) {
         obj = window.location.href.split("display=")[1];
         obj = decodeURIComponent(obj);
+        obj = decodeURIComponent(obj);
         $(".main").addClass("allcards").html(obj);
         $("body").addClass("print");
       } else {
