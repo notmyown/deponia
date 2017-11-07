@@ -342,6 +342,15 @@ function Deponia(data) {
       out += "<div class='tr'><div class='td'>";
       out += " <div class='book'><img src='./img/book.png'></div>";
       out += "</div></div>";
+      out += "<div class='tr'><div class='th perc100'><span class='disclaimer'>";
+      out += "Werde Teil der Daedalic Community:</br>" +
+        "<a href='https://www.facebook.com/daedalic'>https://www.facebook.com/daedalic</a></br>" +
+        "<a href='https://twitter.com/daedalic'>https://twitter.com/daedalic</a></br>" +
+        "<a href='https://www.youtube.com/user/DaedalicEnt'>https://www.youtube.com/user/DaedalicEnt</a></br></br>" + 
+        "Deponia - Das Rollenspiel: erschienen im Uhrwerk Verlag</br>" +
+        "<a href='http://www.uhrwerk-verlag.de/'>http://www.uhrwerk-verlag.de/</a></br></br>" +
+        "</span>";
+      out += "</div></div>";
       out += "</div>"
       $(".main .maincontent").html(out);
     },

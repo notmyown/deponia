@@ -457,4 +457,11 @@ a:link {
 	background: url(../img/char/stress_clicked.png);
 }
 
-
+.disclaimer {
+	font-size: 10px;
+	font-family: Arial, Helvetica, Arial, sans-serif;
+	line-height: 1.2em;
+	color: white;
+	position: relative;
+	top: 2em;
+}
