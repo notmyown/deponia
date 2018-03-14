@@ -403,6 +403,7 @@ function Deponia(data) {
       $(".charimageselector .arrow").click(function() {
         var id = 0;
         var step = 1;
+		var maxid = 45;
         if ($(this).hasClass("right")) {
           step = -1;
         }
@@ -417,9 +418,9 @@ function Deponia(data) {
             old = parseInt(old);
             var newid = old + step; 
             if (newid < 1) {
-              newid = 13;
+              newid = maxid;
             } 
-            if (newid > 13) {
+            if (newid > maxid) {
               newid = 1;
             }
             $(".charimageimg img").attr("src", "./img/char/default/" + newid + ".png");
