@@ -403,7 +403,7 @@ function Deponia(data) {
       $(".charimageselector .arrow").click(function() {
         var id = 0;
         var step = 1;
-		var maxid = 45;
+		var maxid = 46;
         if ($(this).hasClass("right")) {
           step = -1;
         }
